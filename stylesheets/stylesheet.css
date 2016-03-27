@@ -27,6 +27,18 @@ body {
   color: rgb(214, 157, 133);
 }
 
+.vsnumber {
+  color: rgb(181, 206, 168);
+}
+
+.vsmacro {
+  color: rgb(189, 99, 197);
+}
+
+.vsenum {
+  color: rgb(184,215, 163);
+}
+
 a {
   color: #1e6bb8;
   text-decoration: none; }
