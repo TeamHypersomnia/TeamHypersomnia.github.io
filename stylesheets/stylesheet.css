@@ -39,6 +39,10 @@ body {
   color: rgb(184,215, 163);
 }
 
+.vsparam {
+  color: rgb(127, 127, 127);
+}
+
 a {
   color: #1e6bb8;
   text-decoration: none; }
