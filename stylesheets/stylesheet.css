@@ -11,6 +11,10 @@ body {
   background-color: rgb(30, 30, 30);
 }
 
+img {
+  border: 1px solid rgb(127, 127, 127);
+}
+
 .vscomment {
   color: rgb(87, 166, 74);
 }
