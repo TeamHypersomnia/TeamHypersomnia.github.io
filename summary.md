@@ -5,9 +5,7 @@ permalink: /summary/
 ---
 
 <br/>
-<br/>
-<br/>
-<div style ="margin-left: 90px; margin-right: 90px">
+<div>
  <!-- <span class="vscomment">// =============================================================================================================
 <br/>
   </span> -->

@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Welcome to Jekyll!"
+title:  "Inventory progress: scrolling through mouse wheel"
 date:   2016-03-28 20:02:50 +0200
 categories: testcategory
 ---
