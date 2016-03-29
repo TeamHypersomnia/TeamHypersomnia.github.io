@@ -58,3 +58,11 @@ a {
   text-decoration: none; }
   a:hover {
     text-decoration: underline; }
+
+.nounderlinelink {
+  color: rgb(220, 220, 220);
+}
+
+.nounderlinelink:hover {
+ text-decoration: overline !important;
+}

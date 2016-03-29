@@ -1,0 +1,20 @@
+---
+layout: default
+title: All posts
+permalink: /posts/
+---
+<div class="home">
+<br/>
+  <span style="font-size:21px">All posts</span>
+
+  <ul class="post-list">
+    {% for post in site.posts %}
+        [<span class="vsnumber">{{ post.date | date: "%d" }}</span>.<span class="vsnumber">{{ post.date | date: "%m" }}</span>.<span class="vsnumber">{{ post.date | date: "%Y" }}</span>]
+          <a class="vsenum" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+          <br/>
+    {% endfor %}
+  </ul>
+
+  <p>subscribe <a class="vskeyword" href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+
+</div>
