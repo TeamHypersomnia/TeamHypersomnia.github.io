@@ -153,6 +153,10 @@ document.write(d.getFullYear())
   You can find me on <a class="vsenum" href="http://stackexchange.com/users/236344/devdalus?tab=accounts">StackExchange</a> and all of my former projects on <a class="vsenum" href="https://github.com/geneotech/">GitHub</a>. 
   <br/>Or just contact me via <a class="vsenum" href="mailto:patryk.czachurski@gmail.com">e-mail</a>.
 <br/><br/>
+I am currently working full-time on Hypersomnia project,<br/>
+and will continue to do so for a long time to come.
+<br/><br/>
+
 <span class="vscomment">// Trivia</span><br/><br/>
 <a class="vsenum" href="http://math.stackexchange.com/questions/1579998/fractals-using-just-modulo-operation">My research on prime numbers<br/>
 <a class="vsenum" href="https://www.youtube.com/watch?v=pjolw0OFPKM"><span class="vstype">Sensibilia</span> - my game project for ImagineCup Contest</a> <span class="vscomment"> // its description got me TOP30 of Poland. The project is abandoned</span><br/>
