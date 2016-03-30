@@ -7,13 +7,17 @@ layout: default
           <a style="font-size:21px" class="vstext" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a><br/>
         <a class="vstext" href="{{ post.url }}">[<span class="vsnumber">{{ post.date | date: "%d" }}</span>.<span class="vsnumber">{{ post.date | date: "%m" }}</span>.<span class="vsnumber">{{ post.date | date: "%Y" }}</span>] <span class="vscomment">{{post.date | date: "// %H:%M:%S"}}</span> </a>
             
-               {{ post.content | truncatewords:75}}<br/>
+               {{ post.content | truncatewords:75}}
                
                {% assign wordCount = post.content | number_of_words %}
 
   			{% if wordCount > 75 %}
-            <a class="vsenum" href="{{ post.url }}">Read more...</a><br/><br/><br/>
+           </p><a class="vsenum" href="{{ post.url }}">Read more...</a><br/><br/>
    			 {% endif %}
+<span class="vscomment">// =====================================================================================================</span>
+<br/>
+<br/>
+
     {% endfor %}
 
 {% if paginator.total_pages > 1 %}
