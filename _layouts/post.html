@@ -16,23 +16,12 @@ layout: default
     {{ content }}
   </div>
 
-<div id="disqus_thread"></div>
-<script>
-    var disqus_config = function () {
-    	this.page.url = "{{ page.url | prepend: 'http://hypersomnia.pl' }}";  // Replace PAGE_URL with your page's canonical URL variable
-        //this.page.identifier = "234234213412341234124"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-    };
-
-    (function() {  // DON'T EDIT BELOW THIS LINE
-        var d = document, s = d.createElement('script');
-        
-        s.src = '//hypersomnia.disqus.com/embed.js';
-        
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
+<script src="https://apis.google.com/js/plusone.js"></script>
+  <div class="g-comments"
+      data-href="{{'http://hypersomnia.pl'}}{{page.url}}"
+      data-width="642"
+      data-first_party_property="BLOGGER"
+      data-view_type="FILTERED_POSTMOD">
+  </div>
 
 </article>
-
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
