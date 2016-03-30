@@ -3,16 +3,45 @@ layout: default
 ---
 <div class="home">
 <br/>
-  <span style="font-size:21px">The newspaper of Hypersomnia universe</span>
+  <span style="font-size:21px">Recent news</span>
 
   <ul class="post-list">
-    {% for post in site.posts %}
+    {% for post in paginator.posts %}
         [<span class="vsnumber">{{ post.date | date: "%d" }}</span>.<span class="vsnumber">{{ post.date | date: "%m" }}</span>.<span class="vsnumber">{{ post.date | date: "%Y" }}</span>]
           <a class="vsenum" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
           <br/>
     {% endfor %}
   </ul>
 
+<br/>
+{% if paginator.total_pages > 1 %}
+<div class="pagination">
+  {% if paginator.previous_page %}
+    <a class="vsenum" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&laquo; Prev</a>
+  {% else %}
+    <span class="vsparam">&laquo; Prev</span>
+  {% endif %}
+
+  {% for page in (1..paginator.total_pages) %}
+    {% if page == paginator.page %}
+      <span class="vstype">[{{ page }}]</span>
+    {% elsif page == 1 %}
+      <a class="vsenum" href="{{ site.url }}"><span class="vsparam">[</span>{{ page }}<span class="vsparam">]</span></a>
+    {% else %}
+      <a class="vsenum" href="{{  page | prepend: '/page' | prepend: site.baseurl }}"><span class="vsparam">[</span>{{ page }}<span class="vsparam">]</span></a>
+    {% endif %}
+  {% endfor %}
+
+  {% if paginator.next_page %}
+    <a class="vsenum" href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Next &raquo;</a>
+  {% else %}
+    <span class="vsparam">Next &raquo;</span>
+  {% endif %}
+</div>
+{% endif %}
+<br/>
+	Page <span class="vsnumber">{{ paginator.page }}</span> of <span class="vsnumber">{{ paginator.total_pages }}</span><br/>
+  Total posts: <span class="vsnumber">{{ paginator.total_posts }}</span> 
   <p>subscribe <a class="vskeyword" href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
 
 </div>
