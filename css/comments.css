@@ -2,7 +2,7 @@ body{
     color: rgb(220, 220, 220);
     background-color: rgb(30, 30, 30);
     font-family: 'Consolas' !important; 
-    font-size: 12px; 
+    font-size: 12px;
 }
 
 .comment{
@@ -20,8 +20,7 @@ body{
 }
 .comment-form form{
     background: rgba(30, 30, 30, 0.1);
-    width: 300px;
-    margin: 20px auto;
+    width: 600px;
     padding: 10px;
 }
 .comment-form form input,
