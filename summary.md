@@ -153,8 +153,7 @@ document.write(d.getFullYear())
   You can find me on <a class="vsenum" href="http://stackexchange.com/users/236344/devdalus?tab=accounts">StackExchange</a> and all of my former projects on <a class="vsenum" href="https://github.com/geneotech/">GitHub</a>. 
   <br/>Or just contact me via <a class="vsenum" href="mailto:patryk.czachurski@gmail.com">e-mail</a>.
 <br/><br/>
-I am currently working full-time on Hypersomnia project,<br/>
-and will continue to do so for a long time to come.
+I am currently working full-time on Hypersomnia project and will continue to do so regardless of hardships to come.
 <br/><br/>
 
 <span class="vscomment">// Trivia</span><br/><br/>
