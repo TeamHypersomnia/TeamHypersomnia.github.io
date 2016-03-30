@@ -1,9 +1,45 @@
-body {
-border: 0;
-  font-family: 'Consolas' !important; 
-  font-size: 12px; 
-  color: rgb(220, 220, 220);
-  line-height: 1.5;
-  background-color: rgb(30, 30, 30) !important;
-  overflow: visible !important;
+body{
+    color: rgb(220, 220, 220);
+    background-color: rgb(30, 30, 30);
+    font-family: 'Consolas' !important; 
+    font-size: 12px; 
+}
+
+.comment{
+    border-top: 1px solid #333;
+    margin: 20px 0;
+}
+.comment .comment-details{
+    font-size: 0.8em;
+}
+.comment .comment-details .comment-date{
+    color: rgb(87, 166, 74);
+}
+.comment .comment-content{
+    margin-top: 5px;
+}
+.comment-form form{
+    background: rgba(30, 30, 30, 0.1);
+    width: 300px;
+    margin: 20px auto;
+    padding: 10px;
+}
+.comment-form form input,
+.comment-form form textarea,
+.comment-form form button{
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 5px;
+    border: 1px solid #333;
+    border-radius: 3px;
+    color: rgb(220, 220, 220);
+    background-color: rgb(30, 30, 30);
+    font-family: 'Consolas' !important; 
+    font-size: 12px; 
+    box-sizing: border-box;
+}
+.comment-form form textarea{
+    height: 100px;
+    resize: vertical;
 }
