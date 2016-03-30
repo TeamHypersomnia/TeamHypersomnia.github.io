@@ -1,9 +1,9 @@
 ---
 layout: post
 title:  "Test post!"
-date:   2016-03-30 01:02:50 +0200
+date:   2016-03-30 02:02:50 +0200
 categories: jekyll update
-disqus_identifier: 1
+disqus_identifier: 14
 ---
 
 sadj hkjsha dkashdk jhak.
