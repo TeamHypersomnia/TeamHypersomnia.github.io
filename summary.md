@@ -169,5 +169,3 @@ document.write(d.getFullYear())
 <div style="text-align:center">
 <a class="vsparam" href="{{ "/summary/#TOP"| prepend: site.baseurl }}"> <img src="{{ "/dove.gif "| prepend: site.baseurl }}" style="border: 0"/></a>
 </div>
-
-<br/>
