@@ -4,12 +4,12 @@ title: Summary
 permalink: /summary/
 ---
 
-<br/>
 <div>
+<br/>
  <!-- <span class="vscomment">// =============================================================================================================
 <br/>
   </span> -->
-  <span id="SUMMARY" class="vscomment">// Summary
+  <span style="font-size:21px">Summary</span>
 </span> <br/><br/>
 
     <span class="vstype">Hypersomnia</span> is an upcoming 2D multiplayer <span class="vstype">futuristic</span> universe with elements of <span class="vskeyword">fast-paced shooter</span>, <span class="vskeyword"> stealth </span> and <span class="vskeyword">role-playing game</span>. 

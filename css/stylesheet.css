@@ -3,8 +3,8 @@
 
 body {
   padding: 0;
-  margin-left: 90px;
-  margin-right: 90px;
+  margin-left: 5%;
+  margin-right: 5%;
   font-family: 'Consolas'; 
   font-size: 12px; 
   color: rgb(220, 220, 220);
@@ -17,6 +17,10 @@ img {
   max-width: 100%;
 }
 
+
+.vstext {
+  color:rgb(220, 220, 220);
+}
 .vscomment {
   color: rgb(87, 166, 74);
 }

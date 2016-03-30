@@ -3,17 +3,19 @@ layout: default
 ---
 <div class="home">
 <br/>
-  <span style="font-size:21px">Recent news</span>
-
-  <ul class="post-list">
     {% for post in paginator.posts %}
-        [<span class="vsnumber">{{ post.date | date: "%d" }}</span>.<span class="vsnumber">{{ post.date | date: "%m" }}</span>.<span class="vsnumber">{{ post.date | date: "%Y" }}</span>]
-          <a class="vsenum" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-          <br/>
-    {% endfor %}
-  </ul>
+          <a style="font-size:21px" class="vstext" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a><br/>
+        <a class="vstext" href="{{ post.url }}">[<span class="vsnumber">{{ post.date | date: "%d" }}</span>.<span class="vsnumber">{{ post.date | date: "%m" }}</span>.<span class="vsnumber">{{ post.date | date: "%Y" }}</span>] <span class="vscomment">{{post.date | date: "// %H:%M:%S"}}</span> </a>
+            
+               {{ post.content | truncatewords:75}}<br/>
+               
+               {% assign wordCount = post.content | number_of_words %}
 
-<br/>
+  			{% if wordCount > 75 %}
+            <a class="vsenum" href="{{ post.url }}">Read more...</a><br/><br/><br/>
+   			 {% endif %}
+    {% endfor %}
+
 {% if paginator.total_pages > 1 %}
 <div class="pagination">
   {% if paginator.previous_page %}
