@@ -4,13 +4,23 @@ title: Summary
 permalink: /summary/
 ---
 
+<div style="text-align: center">
+
+</div>
 <div>
 <br/>
  <!-- <span class="vscomment">// =============================================================================================================
 <br/>
   </span> -->
+
+
   <span style="font-size:21px">Summary</span>
-</span> <br/><br/>
+</span> <br/>
+
+  <span class="vsparam">Jump to: [<a class="vsenum" href="{{ "/summary#TECHNICALITIES "| prepend: site.baseurl }}">Technicalities</a>]
+[<a class="vsenum" href="{{ "/summary#JOIN "| prepend: site.baseurl }}">Join</a>]
+[<a class="vsenum" href="{{ "/summary#AUTHOR "| prepend: site.baseurl }}">Author</a>]</span> <br/>
+<br/>
 
     <span class="vstype">Hypersomnia</span> is an upcoming 2D multiplayer <span class="vstype">futuristic</span> universe with elements of <span class="vskeyword">fast-paced shooter</span>, <span class="vskeyword"> stealth </span> and <span class="vskeyword">role-playing game</span>. 
     <br/>Set in a hypothetical afterlife reality, it is meant to provide joy through altruistic behaviours and fulfillment of elaborate social roles,<br/>including, but not limited to, sowing panic as a traitor to benevolent ones. <br/><br/>
