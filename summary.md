@@ -36,13 +36,13 @@ permalink: /summary/
 <div>
 <br/>
   <span class="vscomment">// Progress</span><br/><br/>
-
-  The purpose of this website is to portray state-of-the-art through <a class="vsenum" href="https://drive.google.com/folderview?id=0B_gBQSJQBKcjTzJ2bDVhWDhxSjQ&usp=sharing">in-game pictures</a> and most importantly, <a class="vsenum" href="{{site.url}}">blog posts</a>.<br/>
-  Be sure to follow both - I will not keep any official list with current features for it is bound to outdate in a matter of days.<br/>
-
+  I will not keep any official list with current features for it is bound to outdate in a matter of days.<br/>
+  The purpose of this website is to portray state-of-the-art through <a class="vsenum" href="https://drive.google.com/folderview?id=0B_gBQSJQBKcjTzJ2bDVhWDhxSjQ&usp=sharing">in-game pictures</a> and most importantly, <a class="vsenum" href="{{site.url}}">blog posts</a>.
+  
+<br/>
     <br/>
     There is yet no official <span class="vskeyword">lore</span> or <span class="vskeyword">wiki</span> apart from a huge <span class="vstype">Game Design Document</span> whose assumptions are being slowly, yet steadily, fulfilled.<br/>
-    The stories written are many, but they will be polished and revealed when all else is complete.<br/>
+    The stories written are many, but they will be polished and revealed when all else is complete. Stay tuned!<br/>
 
   <br/>
   <span class="vscomment"><!-- // =============================================================================================================

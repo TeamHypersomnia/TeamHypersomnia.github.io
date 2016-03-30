@@ -57,6 +57,10 @@ img {
   color: rgb(127, 127, 127);
 }
 
+.vstriplecomment {
+  color: rgb(0, 100, 0) !important;
+}
+
 a.vsparam:hover {
   color: rgb(127, 127, 127);
     text-decoration: underline;

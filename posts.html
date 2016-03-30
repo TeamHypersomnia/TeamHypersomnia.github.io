@@ -9,7 +9,7 @@ permalink: /posts/
 
   <ul class="post-list">
     {% for post in site.posts %}
-        [<span class="vsnumber">{{ post.date | date: "%d" }}</span>.<span class="vsnumber">{{ post.date | date: "%m" }}</span>.<span class="vsnumber">{{ post.date | date: "%Y" }}</span>]
+        <span class="vsparam">[</span><span class="vsnumber">{{ post.date | date: "%d" }}</span>.<span class="vsnumber">{{ post.date | date: "%m" }}</span>.<span class="vsnumber">{{ post.date | date: "%Y" }}</span><span class="vsparam">]</span>
           <a class="vsenum" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
           <br/>
     {% endfor %}
