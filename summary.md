@@ -43,7 +43,7 @@ permalink: /summary/
   <span class="vscomment">// Pixel cathedral, kind of similar to how the game will look like in the final phase, however the codebase for this version is mostly obsolete </span>
 <br/>
 <br/>
-<img src="{{ "/pictures/cathedral.png "| prepend: site.baseurl }}"/>
+<img src="https://googledrive.com/host/0B_gBQSJQBKcjVTlTZmthNnBPelk/Pixel cathedral.png"/>
 <br/>
 
 <br/>
@@ -51,7 +51,7 @@ permalink: /summary/
 <br/>
 <br/>
 
-<img src="{{ "/pictures/motorcycle_akimbo.gif"| prepend: site.baseurl }}"/>
+<img src="https://googledrive.com/host/0B_gBQSJQBKcjTzJ2bDVhWDhxSjQ/3: Motorcycle akimbo.gif"/>
 <br/>
 
 <br/>
@@ -59,7 +59,7 @@ permalink: /summary/
 <br/>
 <br/>
 
-<img src="{{ "/pictures/rifle_attachments.gif"| prepend: site.baseurl }}"/>
+<img src="https://googledrive.com/host/0B_gBQSJQBKcjTzJ2bDVhWDhxSjQ/1: Rifle attachments.gif"/>
 <br/>
 <br/>
 [<span class="vsenum">See more</span>]
