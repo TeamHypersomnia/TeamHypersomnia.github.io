@@ -14,7 +14,16 @@
     </div>
 
     {% include footer.html %}
-  <script id="dsq-count-scr" src="//hypersomnia.disqus.com/count.js" async></script>
+
+<script>
+alert(1);
+
+$(document).ready(function() {
+  alert($('iframe').contents());
+    $('iframe').contents().find('.mj').css('background','#f00');
+});
+
+</script>
 
   </body>
 
