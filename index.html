@@ -6,7 +6,7 @@ layout: default
     {% for post in paginator.posts %}
           <a style="font-size:21px" class="vstext" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a><br/>
         <a class="vstext" href="{{ post.url }}"><span class="vsparam">[</span><span class="vsnumber">{{ post.date | date: "%d" }}</span>.<span class="vsnumber">{{ post.date | date: "%m" }}</span>.<span class="vsnumber">{{ post.date | date: "%Y" }}</span><span class="vsparam">]</span> <span class="vscomment">{{post.date | date: "// %H:%M:%S"}}</span> </a>
-          <span style="font-style:italic" class="vsparam">(<a class="vsparam" href="{{ '#disqus_thread' | prepend: post.url | prepend: site.baseurl }}">Link</a>)</span><br/>
+          <span style="font-style:italic" class="vsparam">(<a class="vsparam" data-disqus-identifier="{{post.disqus_identifier}}" href="{{ post.url | prepend: site.baseurl }}">Link</a>)</span><br/>
             
                {{ post.content | truncatewords:75}}
                
