@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: defaultnofooter
 title: Summary
 permalink: /summary/
 ---
@@ -17,9 +17,9 @@ permalink: /summary/
   <span style="font-size:21px">Summary</span>
 </span> <br/>
 
-  <span class="vsparam">Jump to: [<a class="vsenum" href="{{ "/summary#TECHNICALITIES "| prepend: site.baseurl }}">Technicalities</a>]
-[<a class="vsenum" href="{{ "/summary#JOIN "| prepend: site.baseurl }}">Join</a>]
-[<a class="vsenum" href="{{ "/summary#AUTHOR "| prepend: site.baseurl }}">Author</a>]</span> <br/>
+  <span class="vsparam">Jump to: [<a class="vsenum" href="{{ "/summary/#TECHNICALITIES "| prepend: site.baseurl }}">Technicalities</a>]
+[<a class="vsenum" href="{{ "/summary/#JOIN "| prepend: site.baseurl }}">Join</a>]
+[<a class="vsenum" href="{{ "/summary/#AUTHOR "| prepend: site.baseurl }}">Author</a>]</span> <br/>
 <br/>
 
     <span class="vstype">Hypersomnia</span> is an upcoming 2D multiplayer <span class="vstype">futuristic</span> universe with elements of <span class="vskeyword">fast-paced shooter</span>, <span class="vskeyword"> stealth </span> and <span class="vskeyword">role-playing game</span>. 
@@ -164,5 +164,10 @@ document.write(d.getFullYear())
   an entropic entity that tirelessly exchanges state of my macrocosm with hundreds of individuals across the planet, whilst scattering <span class="vstype">cyan neons</span> across the dark bedroom.<br/><br/>
   When I place this machine under my pillow and fall asleep listening to the heartbeat of my universe, my life will be complete.<br/>
 </span>
+
+<br/>
+<div style="text-align:center">
+<a class="vsparam" href="{{ "/summary/#TOP"| prepend: site.baseurl }}"> <img src="{{ "/dove.gif "| prepend: site.baseurl }}" style="border: 0"/></a>
+</div>
 
 <br/>

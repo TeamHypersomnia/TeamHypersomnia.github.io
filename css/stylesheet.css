@@ -57,6 +57,11 @@ img {
   color: rgb(127, 127, 127);
 }
 
+a.vsparam:hover {
+  color: rgb(127, 127, 127);
+    text-decoration: underline;
+}
+
 a {
   color: #1e6bb8;
   text-decoration: none; }
