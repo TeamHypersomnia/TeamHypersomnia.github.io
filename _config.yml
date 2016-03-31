@@ -13,6 +13,7 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://hypersomnia.pl" # the base hostname & protocol for your site
 twitter_username: jekyllrb
 github_username:  geneotech
+img_dir:  
 
 # Build settings
 markdown: kramdown

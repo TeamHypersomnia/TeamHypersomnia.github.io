@@ -44,36 +44,17 @@ permalink: /summary/
     There is yet no official <span class="vskeyword">lore</span> or <span class="vskeyword">wiki</span> apart from a huge <span class="vstype">Game Design Document</span> whose assumptions are being slowly, yet steadily, fulfilled.<br/>
     The stories written are many, but they will be polished and revealed when all else is complete. Stay tuned!<br/>
 
-  <br/>
-  <span class="vscomment"><!-- // =============================================================================================================
-<br/>-->// Chosen in-game pictures
-  </span>
-<br/>
-<br/>
-  <span class="vscomment">// Pixel cathedral, kind of similar to how the game will look like in the final phase, however the codebase for this version is mostly obsolete </span>
-<br/>
-<br/>
-<img src="https://googledrive.com/host/0B_gBQSJQBKcjVTlTZmthNnBPelk/Pixel cathedral.png"/>
 <br/>
 
-<br/>
-  <span class="vscomment">// Simple shooting, vehicles and inventory test </span>
-<br/>
-<br/>
-
-<img src="https://googledrive.com/host/0B_gBQSJQBKcjTzJ2bDVhWDhxSjQ/3: Motorcycle akimbo.gif"/>
-<br/>
-
-<br/>
-  <span class="vscomment">// Thorough test of weapon attachments </span>
+  <span class="vscomment">// Tiled cathedral with dynamic pixel-art lighting </span>
 <br/>
 <br/>
-
-<img src="https://googledrive.com/host/0B_gBQSJQBKcjTzJ2bDVhWDhxSjQ/1: Rifle attachments.gif"/>
+<img src="{{ "/pics/summary.png "| prepend: site.baseurl }}"/>
 <br/>
 <br/>
-[<a class="vsenum" href="https://drive.google.com/folderview?id=0B_gBQSJQBKcjTzJ2bDVhWDhxSjQ&usp=sharing">See more</a>]
-<br/><br/>
+[<a class="vsenum" href="{{ "/screenshots"| prepend: site.baseurl }}">More screenshots</a>]
+<br/>
+<br/>
   <span class="vscomment">// Why some of the formerly seen features are absent in the current version? Is the project tending in a backward direction?</span><br/><br/>
   By all means, no:<br/>
   <a class="vstype">Hypersomnia is currently undergoing a major rewrite.</a><br/>
