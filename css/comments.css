@@ -10,7 +10,6 @@ body{
     margin: 20px 0;
 }
 .comment .comment-details{
-    font-size: 0.8em;
     color: rgb(78, 201, 176);
 }
 .comment .comment-details .comment-date{
