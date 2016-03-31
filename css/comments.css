@@ -46,3 +46,47 @@ body{
 #form_author {
     color: rgb(78, 201, 176);
 }
+
+
+.vstext {
+  color:rgb(220, 220, 220);
+}
+.vscomment {
+  color: rgb(87, 166, 74);
+}
+
+.vsprepro {
+  color: rgb(155, 155, 155);
+}
+
+.vstype {
+  color: rgb(78, 201, 176);
+}
+
+.vskeyword {
+  color: rgb(86, 156, 214);
+}
+
+.vsstring {
+  color: rgb(214, 157, 133);
+}
+
+.vsnumber {
+  color: rgb(181, 206, 168);
+}
+
+.vsmacro {
+  color: rgb(189, 99, 197);
+}
+
+.vsenum {
+  color: rgb(184,215, 163);
+}
+
+.vsparam {
+  color: rgb(127, 127, 127);
+}
+
+.vstriplecomment {
+  color: rgb(0, 100, 0) !important;
+}
