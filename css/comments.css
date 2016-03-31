@@ -11,6 +11,7 @@ body{
 }
 .comment .comment-details{
     font-size: 0.8em;
+    color: rgb(78, 201, 176);
 }
 .comment .comment-details .comment-date{
     color: rgb(87, 166, 74);
@@ -41,4 +42,8 @@ body{
 .comment-form form textarea{
     height: 100px;
     resize: vertical;
+}
+
+#form_author {
+    color: rgb(78, 201, 176);
 }
