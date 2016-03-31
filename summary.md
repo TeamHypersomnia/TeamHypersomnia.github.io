@@ -131,10 +131,12 @@ document.write(d.getFullYear())
   I am an independent developer with a lifelong interest in study and practice of engineering simulations. <br/>
   I was born in <span class="vsnumber">1995</span>, involved myself deeply in programming by <span class="vsnumber">2008</span> and have been enamoured with this activity ever since.<br/><br/>
 
-  You can find me on <a class="vsenum" href="http://stackexchange.com/users/236344/devdalus?tab=accounts">StackExchange</a> and all of my former projects on <a class="vsenum" href="https://github.com/geneotech/">GitHub</a>. 
-  <br/>Or just contact me via <a class="vsenum" href="mailto:patryk.czachurski@gmail.com">e-mail</a>.
-<br/><br/>
 I am currently working full-time on Hypersomnia project and will continue to do so regardless of hardships to come.
+<br/><br/>
+
+  You can find me on <a class="vsenum" href="http://stackexchange.com/users/236344/devdalus?tab=accounts">StackExchange</a> and all of my former projects on <a class="vsenum" href="https://github.com/geneotech/">GitHub</a>. 
+  <br/>Contact me via <a class="vsenum" href="mailto:patryk.czachurski@gmail.com">e-mail</a>.<br/>
+  Most of the time I'm also active on our official <a class="vsenum" href="ts3server://ts.hypersomnia.pl?nickname=BlogVisitor&cid=254&channelpassword=defaultChannelPassword&addbookmark=HypersomniaCongressCenter">TeamSpeak 3 server</a>.
 <br/><br/>
 
 <span class="vscomment">// Trivia</span><br/><br/>
