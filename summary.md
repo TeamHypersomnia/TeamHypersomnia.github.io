@@ -49,7 +49,7 @@ permalink: /summary/
   <span class="vscomment">// Tiled cathedral with dynamic pixel-art lighting </span>
 <br/>
 <br/>
-<img src="{{ "/pics/summary.png "| prepend: site.baseurl }}"/>
+<img src="{{ site.img_dir }}summary.png"/>
 <br/>
 <br/>
 [<a class="vsenum" href="{{ "/screenshots"| prepend: site.baseurl }}">More screenshots</a>]
