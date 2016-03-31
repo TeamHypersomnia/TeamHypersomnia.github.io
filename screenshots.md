@@ -12,7 +12,7 @@ permalink: /screenshots/
 <br/>
 <br/>
 
-<img src="{{ site.img_dir }}1.Rifle attachments.png"/>
+<img src="{{ site.img_dir }}1.Rifle attachments.gif"/>
 <br/>
 
 <br/>
@@ -20,7 +20,7 @@ permalink: /screenshots/
 <br/>
 <br/>
 
-<img src="{{ site.img_dir }}3.Motorcycle akimbo.png"/>
+<img src="{{ site.img_dir }}3.Motorcycle akimbo.gif"/>
 <br/>
 <br/>
 [<a class="vsenum" href="https://drive.google.com/folderview?id=0B_gBQSJQBKcjTzJ2bDVhWDhxSjQ&usp=sharing">See more</a>]
