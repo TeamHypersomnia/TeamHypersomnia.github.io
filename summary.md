@@ -136,7 +136,7 @@ I am currently working full-time on Hypersomnia project and will continue to do 
 
   You can find me on <a class="vsenum" href="http://stackexchange.com/users/236344/devdalus?tab=accounts">StackExchange</a> and all of my former projects on <a class="vsenum" href="https://github.com/geneotech/">GitHub</a>. 
   <br/>Contact me via <a class="vsenum" href="mailto:patryk.czachurski@gmail.com">e-mail</a>.<br/>
-  Most of the time I'm also active on our official <a class="vsenum" href="ts3server://ts3.hypersomnia.pl?nickname=BlogVisitor&cid=254&channelpassword=defaultChannelPassword&addbookmark=HypersomniaCongressCenter">TeamSpeak 3 server</a>.
+  Most of the time I'm also active on our official <a class="vsenum" href="{{ "/ts3"| prepend: site.baseurl }}">TeamSpeak 3 server</a>.
 <br/><br/>
 
 <span class="vscomment">// Trivia</span><br/><br/>
