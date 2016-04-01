@@ -16,8 +16,25 @@ layout: default
     {{ content }}
   </div>
 
+
 <div id ="commentssection">
 <iframe seamless="seamless" scrolling="no" frameborder="0" src="{{'http://patrykcysarz.pl/comment-system/web/comments/show/'}}{{ page.comments_identifier }}"></iframe>
-</div>
+<script>
+$('iframe').load(function() {
+$(this).height( $(this).contents().find("body").height() );
+});
+</script>
+</div><!--
+<div id="testLoad"></div>
+<script>$.ajax({
+    url: "{{'http://patrykcysarz.pl/comment-system/web/comments/show/'}}{{ page.comments_identifier }}",
+    type: 'GET',
+    success: function(res) {
+        var text = res.responseText;
+        alert(text);
+        $("#comments-container").html(text);
+        // then you can manipulate your text as you wish
+    }
+});</script>-->
 
 </article>
