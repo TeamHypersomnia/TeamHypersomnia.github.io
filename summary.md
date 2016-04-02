@@ -100,16 +100,17 @@ permalink: /summary/
 
 If you dream about creating an entirely new mechanic, I recommend that you be familiar with <a class ="vsenum" href="http://gamedev.stackexchange.com/questions/31473/what-is-the-role-of-systems-in-a-component-based-entity-
 architecture">component-based entity architecture</a> beforehand.<br/> Better yet, tell me about your plans! Together we can deal with problems more swiftly.
+<br/>
+<br/>
+This website's repository is located <a class="vsenum" href="https://github.com/geneotech/geneotech.github.io">here.</a>
+<br/>
+<br/>
+I am sure to consider every <span class="vstype">pull request</span>.
 
 <br/>
 <br/>
-In any case, I am sure to consider every <span class="vstype">pull request</span>.
-
-<br/>
-<br/>
+  If you have a serious offer, <a class="vsenum" href="mailto:patryk.czachurski@gmail.com">contact me via mail.</a> <br/>
   Or if you just can't wait to utter some brilliant suggestions regarding the game or the website, please do so, too! 
-<br/>
-  <a class="vsenum" href="mailto:patryk.czachurski@gmail.com">Contact me.</a>  
 <br/>
 
 <!--
