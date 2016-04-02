@@ -42,10 +42,16 @@ body {
     box-sizing: border-box;
 }
 
+.comment-form form input:active,
+.comment-form form textarea:active,
+.comment-form form button:active{
+    border: 1px solid rgba(78, 201, 176, 200);
+}
+
 .comment-form form input:focus,
 .comment-form form textarea:focus,
 .comment-form form button:focus{
-    border: 1px solid rgb(78, 201, 176);
+    border: 1px solid rgba(78, 201, 176, 200);
 }
 
 .comment-form form input:hover,
