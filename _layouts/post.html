@@ -24,17 +24,15 @@ $('iframe').load(function() {
 $(this).height( $(this).contents().find("body").height() );
 });
 </script>
-</div><!--
-<div id="testLoad"></div>
-<script>$.ajax({
-    url: "{{'http://patrykcysarz.pl/comment-system/web/comments/show/'}}{{ page.comments_identifier }}",
-    type: 'GET',
-    success: function(res) {
-        var text = res.responseText;
-        alert(text);
-        $("#comments-container").html(text);
-        // then you can manipulate your text as you wish
-    }
-});</script>-->
+</div>
+<script>
+
+$(document).ready(function()
+{
+  $.post( "{{'http://patrykcysarz.pl/comment-system/web/comments/show/'}}{{ page.comments_identifier }}", function( data ) {
+    $("#commentssection").html(data);
+  });	
+});
+</script>
 
 </article>
