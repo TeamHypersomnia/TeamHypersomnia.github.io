@@ -7,7 +7,7 @@ layout: default
   var postCounts = null;
   
   $.post( "http://patrykcysarz.pl/comment-system/web/comments/get-count", function( data ) {
-    postCounts = JSON.parse($data);
+    postCounts = JSON.parse(data);
   });
   
   console.log(postCounts);
