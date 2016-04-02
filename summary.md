@@ -138,7 +138,7 @@ I am currently working full-time on Hypersomnia project and will continue to do 
   You can find me on <a class="vsenum" href="http://stackexchange.com/users/236344/devdalus?tab=accounts">StackExchange</a> and all of my former projects on <a class="vsenum" href="https://github.com/geneotech/">GitHub</a>. 
   <br/>Contact me via <a class="vsenum" href="mailto:patryk.czachurski@gmail.com">e-mail</a>.<br/>
   Most of the time I'm also active on our official <a class="vsenum" href="{{ "/ts3"| prepend: site.baseurl }}">TeamSpeak 3 server</a>.<br/>
-  Want to play vidya? <a class="vsenum" href="http://steamcommunity.com/profiles/76561198051900812/">Add me on Steam</a>.
+  Want to play vidya? <a class="vsenum" href="http://steamcommunity.com/id/hypersomnialeaddev/">Add me on Steam</a>.
 <br/><br/>
 
 <span class="vscomment">// Trivia</span><br/><br/>
