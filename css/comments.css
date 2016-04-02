@@ -10,6 +10,11 @@ body {
 .comment .comment-details{
     color: rgb(78, 201, 176);
 }
+
+.comment admin .comment-details{
+    color: rgb(255, 0, 0);
+}
+
 .comment .comment-details .comment-date{
     color: rgb(87, 166, 74);
 }
