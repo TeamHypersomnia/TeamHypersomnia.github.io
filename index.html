@@ -49,5 +49,9 @@ layout: default
 <br/>
 	Page <span class="vsnumber">{{ paginator.page }}</span> of <span class="vsnumber">{{ paginator.total_pages }}</span><br/>
   Total posts: <span class="vsnumber">{{ paginator.total_posts }}</span> 
-
+<script>
+alert(1);
+$.post( "http://patrykcysarz.pl/comment-system/web/comments/get-count", function( data ) {
+  alert(data);
+});</script>
 </div>

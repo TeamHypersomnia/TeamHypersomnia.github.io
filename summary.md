@@ -148,7 +148,7 @@ I am currently working full-time on Hypersomnia project and will continue to do 
 <span class="vsparam">
   I envision a server populated with players of my game, a warm processing unit that continuously propagates schemata I've designed;<br/>
   an entropic entity that tirelessly exchanges state of my macrocosm with hundreds of individuals across the planet, whilst scattering <span class="vstype">cyan neons</span> across the dark bedroom.<br/><br/>
-  When I place this machine under my pillow and fall asleep listening to the heartbeat of my universe, my life will be complete.<br/>
+  When I place this machine under my pillow and fall asleep while listening to the heartbeat of my universe, my life will be complete.<br/>
 </span>
 
 <br/>
