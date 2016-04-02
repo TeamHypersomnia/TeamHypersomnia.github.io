@@ -10,7 +10,7 @@ layout: default
           <a style="font-size:21px" class="vstext" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a><br/>
         <a class="vstext" href="{{ post.url }}"><span class="vsparam">[</span><span class="vsnumber">{{ post.date | date: "%d" }}</span>.<span class="vsnumber">{{ post.date | date: "%m" }}</span>.<span class="vsnumber">{{ post.date | date: "%Y" }}</span><span class="vsparam">]</span> <span class="vscomment">{{post.date | date: "// %H:%M:%S"}}</span> </a>
           <span style="font-style:italic" class="vsparam">(
-             <a class="vsparam replies-count" data-disqus-url="{{ post.url | prepend: 'http://hypersomnia.pl'}}" href="{{ post.url | prepend: site.baseurl }}"> REPLIES_COUNT_GOES_HERE </a>
+             <a class="vsparam replies-count" href="{{ post.url | prepend: site.baseurl }}"> REPLIES_COUNT_GOES_HERE </a>
           )</span><br/>
             
                {{ post.content | truncatewords:75}}
