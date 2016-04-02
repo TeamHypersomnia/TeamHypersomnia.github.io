@@ -2,6 +2,17 @@
 layout: default
 ---
 <div class="home">
+
+<script>
+  var postCounts = null;
+  
+  $.post( "http://patrykcysarz.pl/comment-system/web/comments/get-count", function( data ) {
+    postCounts = JSON.parse($data);
+  });
+  
+  console.log(postCounts);
+</script>
+
 <br/>
     {% for post in paginator.posts %}
           <a style="font-size:21px" class="vstext" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a><br/>
@@ -49,11 +60,6 @@ layout: default
 <br/>
 	Page <span class="vsnumber">{{ paginator.page }}</span> of <span class="vsnumber">{{ paginator.total_pages }}</span><br/>
   Total posts: <span class="vsnumber">{{ paginator.total_posts }}</span> 
-<script>
-alert(1);
-$.post( "http://patrykcysarz.pl/comment-system/web/comments/get-count", function( data ) {
-  alert(data);
-});</script>
 
 <br/><br/><span class="vsparam">Notify me of followup posts via e-mail:</span><br/>
 
