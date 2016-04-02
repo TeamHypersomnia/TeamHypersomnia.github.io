@@ -61,10 +61,9 @@ $(document).ready(function()
   $.post( "http://patrykcysarz.pl/comment-system/web/comments/get-count", function( data ) {
     var postCounts = JSON.parse(data);
     
-    for(var postCount in postCounts)
+    for(var postId in postCounts)
     {
-    	console.log(postCount);
-    	$(".post-container[data-id='" + postCount + "'").find(".replies-count").html(postCount + " Comments");
+    	$(".post-container[data-id='" + postId + "'").find(".replies-count").html(postCounts[postId] + " Comments");
     }
   });	
 });
