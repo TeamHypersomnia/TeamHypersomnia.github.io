@@ -56,7 +56,11 @@ layout: default
 <script>
   $.post( "http://patrykcysarz.pl/comment-system/web/comments/get-count", function( data ) {
     var postCounts = JSON.parse(data);
-    console.log(postCounts);
+    
+    for(var postCount in postCounts)
+    {
+    	console.log(postCount);
+    }
   });
 </script>
 
