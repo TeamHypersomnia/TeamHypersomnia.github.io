@@ -60,7 +60,7 @@ layout: default
     for(var postCount in postCounts)
     {
     	console.log(postCount);
-    	$(".post-container[data-id='" + postCount + "'").html("x");
+    	$(".post-container[data-id='" + postCount + "'").find(".replies-count").html(postCount);
     }
   });
 </script>
