@@ -8,7 +8,7 @@ layout: default
     {% for post in paginator.posts %}
     <div class="post-container" data-id="{{ post.comments_identifier }}">
           <a style="font-size:21px" class="vstext" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a><br/>
-        <a class="vstext" href="{{ post.url }}"><span class="vsparam">[</span><span class="vsnumber">{{ post.date | date: "%d" }}</span>.<span class="vsnumber">{{ post.date | date: "%m" }}</span>.<span class="vsnumber">{{ post.date | date: "%Y" }}</span><span class="vsparam">]</span> <span class="vscomment">{{post.date | date: "// %H:%M:%S"}}</span> </a>
+        <a class="vstext" href="{{ post.url }}"><span class="vsparam">[</span><span class="vsnumber">{{ post.date | date: "%d" }}</span>.<span class="vsnumber">{{ post.date | date: "%m" }}</span>.<span class="vsnumber">{{ post.date | date: "%Y" }}</span><span class="vsparam">]</span> <span class="vscomment">{{post.date | date: "// %H:%M"}}</span> </a>
           <a style="font-style:italic" class="vsparam replies-count" href="{{ post.url | prepend: site.baseurl }}">(Be the first to comment!)</a><br/><br/>
             
                {{ post.content | truncatewords:75}}
