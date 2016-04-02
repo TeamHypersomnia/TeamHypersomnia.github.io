@@ -7,11 +7,9 @@ layout: default
   <header class="post-header">
     <span class="post-title" itemprop="name headline" style="font-size:21px">{{ page.title }}</span><br/>
             <a class="vstext" href="{{ post.url }}"><span class="vsparam">[</span><span class="vsnumber">{{ page.date | date: "%d" }}</span>.<span class="vsnumber">{{ page.date | date: "%m" }}</span>.<span class="vsnumber">{{ page.date | date: "%Y" }}</span><span class="vsparam">]</span> <span class="vscomment">{{page.date | date: "// %H:%M:%S"}}</span> </a> 
-    <p class="post-meta">
-
-    {% if page.author %} • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>{% endif %}</p>
   </header>
 
+  <br/>
   <div class="post-content" itemprop="articleBody">
     {{ content }}
   </div>
