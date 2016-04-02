@@ -9,7 +9,7 @@ layout: default
     <div class="post-container" data-id="{{ post.comments_identifier }}">
           <a style="font-size:21px" class="vstext" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a><br/>
         <a class="vstext" href="{{ post.url }}"><span class="vsparam">[</span><span class="vsnumber">{{ post.date | date: "%d" }}</span>.<span class="vsnumber">{{ post.date | date: "%m" }}</span>.<span class="vsnumber">{{ post.date | date: "%Y" }}</span><span class="vsparam">]</span> <span class="vscomment">{{post.date | date: "// %H:%M:%S"}}</span> </a>
-          <a style="font-style:italic" class="vsparam replies-count" href="{{ post.url | prepend: site.baseurl }}">(REPLIES_COUNT_GOES_HERE)</a><br/>
+          <a style="font-style:italic" class="vsparam replies-count" href="{{ post.url | prepend: site.baseurl }}">(Loading comments...)</a><br/>
             
                {{ post.content | truncatewords:75}}
                
@@ -61,7 +61,7 @@ $(document).ready(function()
     
     for(var postId in postCounts)
     {
-    	$(".post-container[data-id='" + postId + "'").find(".replies-count").html(postCounts[postId] + " Comments");
+    	$(".post-container[data-id='" + postId + "'").find(".replies-count").html("(" + postCounts[postId] + " Comments)");
     }
   });	
 });
