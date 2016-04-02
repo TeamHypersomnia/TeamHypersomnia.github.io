@@ -18,13 +18,8 @@ layout: default
 
 
 <div id ="commentssection">
-  <iframe seamless="seamless" scrolling="no" frameborder="0" src="{{'http://patrykcysarz.pl/comment-system/web/comments/show/'}}{{ page.comments_identifier }}"></iframe>
+  <iframe seamless="seamless" scrolling="no" frameborder="0" src="{{'http://patrykcysarz.pl/comment-system/web/comments/show/'}}{{ page.comments_identifier }}" style="width: 100%"></iframe>
 </div>
-<script>
-$('iframe').load(function() {
-$(this).height( $(this).contents().find("body").height() );
-});
-</script>
 
 <script>$('iframe').iFrameResize();</script>
 
