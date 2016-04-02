@@ -18,21 +18,13 @@ layout: default
 
 
 <div id ="commentssection">
-<iframe seamless="seamless" scrolling="no" frameborder="0" src="{{'http://patrykcysarz.pl/comment-system/web/comments/show/'}}{{ page.comments_identifier }}"></iframe>
+  <iframe seamless="seamless" scrolling="no" frameborder="0" src="{{'http://patrykcysarz.pl/comment-system/web/comments/show/'}}{{ page.comments_identifier }}"></iframe>
+</div>
 <script>
 $('iframe').load(function() {
 $(this).height( $(this).contents().find("body").height() );
 });
 </script>
 </div>
-<script>
-
-$(document).ready(function()
-{
-  $.post( "{{'http://patrykcysarz.pl/comment-system/web/comments/show/'}}{{ page.comments_identifier }}", function( data ) {
-    $("#commentssection").html(data);
-  });	
-});
-</script>
 
 </article>
