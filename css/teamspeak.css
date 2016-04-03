@@ -37,11 +37,11 @@ div.chanimg
 div.channame
 	{
 	float:left;
-	height:16px;
+	height:12px;
 	line-height:16px;
 	font-size:12px;
 	font-weight:lighter;
-	color:rgb(220, 220, 220);
+	color:rgb(78, 201, 176);
 	}
 div.spacer
 	{
@@ -50,7 +50,8 @@ div.spacer
 	line-height:16px;
 	font-size:10px;
 	font-weight:bold;
-	color:rgb(139,180,214);
+	width:100%;
+	color:rgb(80,80,80);
 	}
 div.fullimg
 	{
