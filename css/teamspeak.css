@@ -6,6 +6,10 @@ body
         line-height: 1.5;
 	background-color: rgb(30, 30, 30);
 	}
+a:link, a:visited, a:hover, a:active {
+	color:rgb(86, 156, 214);
+	text-decoration: none;
+	}
 div.content
 	{
 	background-color:rgb(30, 30, 30);
@@ -35,7 +39,7 @@ div.channame
 	float:left;
 	height:16px;
 	line-height:16px;
-	font-size:12px;
+	font-size:15px;
 	font-weight:lighter;
 	color:rgb(86, 156, 214);
 	}
