@@ -1,14 +1,14 @@
-body
+body:
 	{
-	font-family: Consolas,monaco,monospace !important; 
+	font-family: Consolas,monaco,monospace; 
 	font-size: 12px; 
 	color: rgb(220, 220, 220);
         line-height: 1.5;
-	background-color: rgb(30, 30, 30) !important;
+	background-color: rgb(30, 30, 30);
 	}
 div.content
 	{
-
+	background-color: rgb(30, 30, 30);
 	}
 div.place
 	{
