@@ -39,7 +39,7 @@ div.channame
 	float:left;
 	height:16px;
 	line-height:16px;
-	font-size:15px;
+	font-size:12px;
 	font-weight:lighter;
 	color:rgb(220, 220, 220);
 	}
@@ -48,7 +48,7 @@ div.spacer
 	float:left;
 	height:16px;
 	line-height:16px;
-	font-size:14px;
+	font-size:10px;
 	font-weight:bold;
 	color:rgb(139,180,214);
 	}
