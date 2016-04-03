@@ -130,13 +130,15 @@ div.clientnick
 	font-size:12px;
 	font-style:normal;
 	font-weight:bold;
-	color: #FFFFFF;
+	color:#ffffff;
 	}
 div.channel
 	{
+	font-size:14px;
 	height:16px;
 	line-height:16px;
 	margin-bottom:3px;
+	color:#ffffff;
 	}
 div.client
 	{
