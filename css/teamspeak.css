@@ -45,8 +45,8 @@ div.channame
 	}
 div.spacer
 	{
-	float:left;
-	height:12px;
+	float:center;
+	height:16px;
 	line-height:16px;
 	font-size:12px;
 	font-weight:lighter;
@@ -163,11 +163,12 @@ div.client
 div.servername
 	{
 	float:left;
-	height:16px;
-	line-height:16px;
-	font-size:12px;
+	height:20px;
+	line-height:20px;
+	font-size:16px;
 	font-style:normal;
-	font-weight:lighter;
+	font-weight:bolder;
+	color:rgb(214, 157, 133);
 	}
 div.server_img
 	{
