@@ -43,6 +43,15 @@ div.channame
 	font-weight:lighter;
 	color:rgb(86, 156, 214);
 	}
+div.spacer
+	{
+	float:left;
+	height:16px;
+	line-height:16px;
+	font-size:14px;
+	font-weight:bold;
+	color:rgb(139,180,214);
+	}
 div.fullimg
 	{
 	float:left;
