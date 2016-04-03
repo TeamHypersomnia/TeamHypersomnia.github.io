@@ -1,6 +1,6 @@
 body:
 	{
-	font-family: Consolas,monaco,monospace !important;
+	font-family: Consolas;
 	font-size: 12px; 
 	color: rgb(220, 220, 220);
         line-height: 1.5;
@@ -130,6 +130,7 @@ div.clientnick
 	font-size:12px;
 	font-style:normal;
 	font-weight:bold;
+	color: #FFFFFF;
 	}
 div.channel
 	{
