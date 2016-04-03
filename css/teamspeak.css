@@ -40,16 +40,16 @@ div.channame
 	height:12px;
 	line-height:16px;
 	font-size:12px;
-	font-weight:lighter;
+	font-weight:bold;
 	color:rgb(78, 201, 176);
 	}
 div.spacer
 	{
 	float:left;
-	height:18px;
-	line-height:20px;
-	font-size:10px;
-	font-weight:bold;
+	height:12px;
+	line-height:16px;
+	font-size:12px;
+	font-weight:lighter;
 	width:100%;
 	color:rgb(80,80,80);
 	}
