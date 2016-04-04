@@ -24,7 +24,9 @@ permalink: /ts3/
 
   </ul>
   <iframe id="tsviewer" allowtransparency="true" src="http://ts.v3rs.net:35380/tsviewpub.php?skey=0&sid=1&showicons=right" width="700" scrolling="no" frameborder="0">Your Browser will not show Iframes</iframe>
-  <script>$('iframe').iFrameResize({interval:32});</script>
-  <script>document.getElementById('tsviewer').src = document.getElementById('tsviewer').src;</script>
+  <script>
+  $('tsviewer').iFrameResize({interval:32});
+  document.getElementById('tsviewer').src = document.getElementById('tsviewer').src;
+  </script>
 <head>
 </head>
