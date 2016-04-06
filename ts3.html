@@ -23,13 +23,14 @@ permalink: /ts3/
   <span class="vsnumber">5</span>. Pick any of the channels inside <span class="vsmacro">PARLEMENT OF HYPERSOMNIA</span> section, we will be there.<br/>
 
   </ul>
-  <iframe name="tsviewer" allowtransparency="true" src="http://ts.v3rs.net:35380/tsviewpub.php?skey=0&sid=1&showicons=right" width="700" scrolling="no" frameborder="0">Your Browser will not show Iframes</iframe>
-  <script>$('iframe').iFrameResize();</script>
-  <script>
-	var iframe = document.getElementById('youriframe');
-	iframe.src = iframe.src;
+  <script type=text/javascript>
+  function refresh()
+  		{
+  		document.all.iFrameResizer0.src = document.all.iFrameResizer0.src;
+  		}
+  	window.setInterval("refresh()", 1000)
   </script>
-
+  <iframe id="iFrameResizer0" allowtransparency="true" src="http://ts.v3rs.net:35380/tsviewpub.php?skey=0&sid=1&showicons=right" width="700" scrolling="no" frameborder="0">Your Browser will not show Iframes</iframe>
+    <script>$('iframe').iFrameResize()</script>
 <head>
-<meta http-equiv="refresh" content="1; url={{site.ts3_link}}" />
 </head>
