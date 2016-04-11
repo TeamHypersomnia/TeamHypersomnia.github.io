@@ -3,12 +3,13 @@ layout: default
 title: TeamSpeak3 Server
 permalink: /ts3/
 ---
-OPTIONS /tsviewpub.php HTTP/1.1
+OPTIONS /* HTTP/1.1
 Origin: http://ts.v3rs.net:35380
-Access-Control-Request-Method: PUT
-Access-Control-Request-Headers: customheader:
 Host: http://hypersomnia.pl/
-Accept-Language: en-US
+Accept-Language: en-US,en;q=0.5
+Accept: text/html
+Accept-Charset: utf-8
+Access-Control-Request-Method: PUT
 Connection: keep-alive
 
 <br/>
