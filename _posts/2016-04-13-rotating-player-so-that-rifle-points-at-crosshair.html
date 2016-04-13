@@ -64,7 +64,7 @@ Below you can see the code for the angle calculating function.<br/>
 <div class="spacer"></div>
 
 {% highlight cpp %}
-float colinearize_AB(vec2 O_center_of_rotation, vec2 A_rifle_center, vec2 B_barrel, vec2 C_crosshair) {
+float colinearize_ABC(vec2 O_center_of_rotation, vec2 A_rifle_center, vec2 B_barrel, vec2 C_crosshair) {
 	auto crosshair_vector = C_crosshair - O_center_of_rotation;
 	auto barrel_vector = B_barrel - O_center_of_rotation;
 	
@@ -76,10 +76,10 @@ float colinearize_AB(vec2 O_center_of_rotation, vec2 A_rifle_center, vec2 B_barr
 	
 	C_crosshair = O_center_of_rotation + crosshair_vector;
 
-	float oc_radius = crosshair_vector.length();
+	auto oc_radius = crosshair_vector.length();
 	
 	auto intersection = circle_ray_intersection(B_barrel, A_rifle_center, O_center_of_rotation, oc_radius);
-	bool has_intersection = intersection.first;
+	auto has_intersection = intersection.first;
 	
 	ensure(has_intersection);
 
