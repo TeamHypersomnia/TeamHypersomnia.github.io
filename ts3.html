@@ -32,18 +32,29 @@ Connection: keep-alive
   <span class="vsnumber">3</span>. Paste <a class="vsenum" href="{{site.ts3_link}}"><span class="vsparam"></span>ts3.hypersomnia.pl<span class="vsparam"></span></a> in the <span class="vskeyword">Server Address</span> field.<br/>
   <span class="vsnumber">4</span>. Fill in your <span class="vskeyword">Nickname</span>, leave <span class="vskeyword">Server Password</span> field empty and click <span class="vskeyword">Connect</span>.<br/>
   <span class="vsnumber">5</span>. Pick any of the channels inside <span class="vsmacro">PARLEMENT OF HYPERSOMNIA</span> section, we will be there.<br/>
-
-  </ul>
-<!--
-<script type=text/javascript>
-  function refresh()
-  		{
-  		document.all.iFrameResizer0.src = document.all.iFrameResizer0.src;
-  		}
-  	window.setInterval("refresh()", 1000)
-  </script>
--->
+    </ul>
+<!-- TS WIDGET IFRAME WITH iFrameResizer --!>  
   <iframe id="iFrameResizer0" allowtransparency="true" src="http://ts.v3rs.net:35380/tsviewpub.php?skey=0&sid=1&showicons=right" width="700" scrolling="no" frameborder="0">Your Browser will not show Iframes</iframe>
     <script>$('iframe').iFrameResize()</script>
 <head>
+<!-- CORS AJAX REQUEST --!>
+<!-- IN PROGRESS //
+<script type="text/javascript">
+	window.onload = doCORS();
+
+	function doCORS(){
+		var url		= "http://ts.v3rs.net:35380/tsviewpub.php"
+		var request	= ""
+		var xmlhttp	= new XMLHttpRequest();
+
+		xmlhttp.open("POST", url);
+		xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+		xmlhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
+		xmlhttp.setRequestHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+		xmlhttp.setRequestHeader("Access-Control-Request-Allow-Headers", "Content-Type");
+		xmlhttp.setRequestHeader("Access-Control-Request-Headers", "X-Requested-With, accept, content-type");
+
+		xmlhttp.onreadystatechange = function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200){
+// --!>	
 </head>
