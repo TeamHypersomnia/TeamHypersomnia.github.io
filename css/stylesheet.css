@@ -12,6 +12,10 @@ body {
   background-color: rgb(30, 30, 30);
 }
 
+.language-cpp {
+  font-family: Consolas,monaco,monospace !important; 
+}
+
 img {
   border: 1px solid rgb(127, 127, 127);
   max-width: 100%;
@@ -24,6 +28,20 @@ iframe {
                 position:relative; 
                 height: 100%;
                 overflow: hidden;
+}
+
+.vsfunction,
+.highlight .nf,
+.highlight
+{
+  color: rgb(200, 200, 200);
+}
+
+.vskeyword,
+.highlight .kt,
+.highlight .k
+{
+  color: rgb(86, 156, 214);
 }
 
 .vstext {
@@ -41,14 +59,13 @@ iframe {
   color: rgb(78, 201, 176);
 }
 
-.vskeyword {
-  color: rgb(86, 156, 214);
-}
 
 .vsstring {
   color: rgb(214, 157, 133);
 }
 
+.highlight .mi,
+.highlight .mf,
 .vsnumber {
   color: rgb(181, 206, 168);
 }

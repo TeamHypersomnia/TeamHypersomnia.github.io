@@ -1,0 +1,111 @@
+---
+layout: post
+title:  "Rotating player so that the rifle points at crosshair"
+date:   2016-04-13 16:24:00 +0200
+comments_identifier: rotatingplayer
+---
+At some point, you might want to attach a rifle to your top-down hero.<br/>
+And, you might want to <span class="vskeyword">shoot it</span>.</br>
+<br/>
+My game involves a crosshair that determines the player body's rotation around its origin.<br/>
+The body's origin is the center of the character's head <span class="vstype">O</span>.<br/>
+The body may have several fixtures which necessarily rotate therewith, for example a gun attached to the primary hand.<br/>
+<br/>
+As such, the crosshair is used to properly direct every gunshot.<br/>
+<br/>
+Everything's all and well if the rifle's center <span class="vstype">A</span>, the rifle's barrel <span class="vstype">B</span> and your player's head center <span class="vstype">O</span> are all colinear.<br/>
+<span class="vsparam">(I assume here that each launched bullet follows the ray defined by <span class="vstype">AB)</span></span>.<br/>
+This is especially true if you position your gun like this:<br/><br/>
+<img src="{{ site.img_dir }}head_gun.png"/><br/><br/>
+<span class="vsparam">(if your head looks at the crosshair, so does the rifle and its barrel).</span><br/>
+But we're not always this lucky, especially if you're after gangsta-pistol layout: <br/><br/>
+<img src="{{ site.img_dir }}head_pistol.png"/><br/>
+<br/>
+In other words:<br/>
+Given are points: <span class="vstype">O<span class="vsparam"> (head)</span>, A <span class="vsparam"> (rifle center)</span>, B <span class="vsparam"> (barrel)</span>, C <span class="vsparam"> (crosshair)</span>.</span><br/>
+Given is a <span class="vskeyword">circle</span> whose center is at <span class="vstype">O</span class="vstype"> and whose radius is <span class="vstype">OB</span class="vstype">.<br/>
+These conditions follow:<br/>
+1. <span class="vstype">A</span> lies inside the <span class="vskeyword">circle</span>.<br/>
+2. <span class="vstype">C</span> lies outside the <span class="vskeyword">circle</span>.<br/>
+<br/>
+Notice that <span class="vstype">B</span> lies on the <span class="vskeyword">circle</span>.<br/>
+<br/>
+The question becomes:<br/>
+<span class="vsenum">By what angle should we rotate <span class ="vsparam">(around the center of rotation O)</span> points A and B in order to make A, B and C colinear?</span></br>
+<br/>
+Well, I'm not particularly good at geometry but fortunately, Marcel, a friend of mine, came to the rescue!<br/>
+It took him no more than 15 minutes of scribbling with his compass to come up with a solution:<br/>
+1. Consider a circle <span class="vstype">Y</span> whose center is at <span class="vstype">O</span class="vstype"> and whose radius is <span class="vstype">OC</span>.<br/>
+2. Let <span class="vstype">G</span class="vstype"> be a point of intersection of <span class="vstype">Y</span> and a ray <span class="vstype">BA</span>.<br/>
+3. The angle we're looking for is twice the angle <span class="vstype">CGA</span>.<br/>
+<br/>
+Without really trying to validate his mysterious recommendation, I went on to code the damn thing.<br/>
+And guess what, it works flawlessly!<br/>
+This is how these hardcore calculations look like in debug drawing mode:<br/><br/>
+<img src="{{ site.img_dir }}rotating_crosshair.gif"/><br/>
+<br/>
+Legend:<br/>
+<span style="color: yellow">OG</span><br/>
+<span style="color: red">Input A, B and properly rotated A, B</span><br/>
+<span style="color: white">line going through the points A, B, C</span><br/>
+<span style="color: green">angle CGA</span><br/>
+<span style="color: cyan">OC</span><br/>
+<br/>
+Very well. So, from now on, you can shoot your gun with pinpoint accuracy.<br/><br/>
+<img src="{{ site.img_dir }}colinearity.png"/><br/><br/>
+<span class="vsparam">I've already got a working recoil prototype, so the bullet is not exactly on the barrel-crosshair line due to crosshair's displacement after the shot.</span><br/><br/> 
+<!--<a href=""> Click to see animation.-->
+
+Below you can see the code for the angle calculating function.<br/>
+<br/>
+<div class="spacer"></div>
+
+{% highlight cpp %}
+float colinearize_AB(vec2 O_center_of_rotation, vec2 A_rifle_center, vec2 B_barrel, vec2 C_crosshair) {
+	auto crosshair_vector = C_crosshair - O_center_of_rotation;
+	auto barrel_vector = B_barrel - O_center_of_rotation;
+	
+	if (crosshair_vector.is_epsilon(1.f))
+		crosshair_vector.set(1, 0);
+
+	if (crosshair_vector.length() < barrel_vector.length() + 1.f)
+		crosshair_vector.set_length(barrel_vector.length() + 1.f);
+	
+	C_crosshair = O_center_of_rotation + crosshair_vector;
+
+	float oc_radius = crosshair_vector.length();
+	
+	auto intersection = circle_ray_intersection(B_barrel, A_rifle_center, O_center_of_rotation, oc_radius);
+	bool has_intersection = intersection.first;
+	
+	ensure(has_intersection);
+
+	auto G = intersection.second;
+	auto CG = C_crosshair - G;
+	auto AG = A_rifle_center - G;
+
+	auto final_angle = 2 * CG.angle_between(AG);
+	
+	if (DEBUG_DRAW_COLINEARIZATION) {
+		auto& ln = augs::renderer::get_current().logic_lines;
+
+		ln.draw_cyan(O_center_of_rotation, C_crosshair);
+		ln.draw_red(O_center_of_rotation, A_rifle_center);
+		ln.draw_red(O_center_of_rotation, B_barrel);
+		ln.draw_yellow(O_center_of_rotation, G);
+		
+		ln.draw_green(G, A_rifle_center);
+		ln.draw_green(G, C_crosshair);
+
+		A_rifle_center.rotate(final_angle, O_center_of_rotation);
+		B_barrel.rotate(final_angle, O_center_of_rotation);
+
+		ln.draw_red(O_center_of_rotation, A_rifle_center);
+		ln.draw_red(O_center_of_rotation, B_barrel);
+
+		ln.draw(A_rifle_center - (B_barrel - A_rifle_center) * 100, B_barrel + (B_barrel - A_rifle_center)*100);
+	}
+
+	return final_angle;
+}
+{% endhighlight %}
