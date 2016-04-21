@@ -1,0 +1,68 @@
+---
+layout: post
+title:  "Firearms progress: recoil, traces, particle effects"
+date:   2016-04-21 3:22:00 +0200
+comments_identifier: Firearmsprogressrecoiltraces
+---
+That was quite a break from posting.<br/>
+I wanted to complete several things before this write-up.<br/>
+<br/>
+First and foremost, <span class="vstype">firearm recoil</span>!<br/>
+The crosshair gets an invisible physical body to whom I apply an impulse whenever a shot is fired.<br/> 
+It is completely deterministic so you could basically learn the force pattern.<br/>
+<br/>
+<br/>
+<video id="7.Deterministic-recoil" src="https://googledrive.com/host/0B_gBQSJQBKcjTzJ2bDVhWDhxSjQ/7.Deterministic-recoil.webm" controls></video>
+<br/>
+<br/>
+In the clip above, my mouse controller remains motionless all the time.<br/>
+The whole displacement results therefore from the weapon's kickback.<br/>
+Notice that regardless of recoil, the bullet is always launched exactly towards the crosshair with pinpoint accuracy.<br/>
+<span class="vstype">New weapons by the way</span>! That was me shooting a <span class="vskeyword">submachine gun</span> and there's also <span class="vskeyword">semi-automatic pistol</span>.<br/>
+<br/> 
+Secondly, <span class="vstype">bullet traces</span>!<br/>
+Some of the poorly written simulations fail to duly visualize the logical step at which bullet's destruction takes place;<br/>
+upon integration of its position and detecting the final collision, they simply dispose of the bullet and it is never rendered at the exact point of impact.<br/>
+<br/>
+Watch the above video once again.<br/>
+Bullets randomly stretch as they fly and later they shrink exactly at where they are supposed to die.<br/>
+They disappear only at the moment they become zero width through smooth contraction.<br/>
+As for me, this makes up for a seamless hitting experience.<br/>
+<br/>
+Thirdly, <span class="vstype">particle effects</span>!<br/>
+I'm sure that you noticed by now but let's view it again in an actual firefight:<br/>
+<br/>
+<br/>
+<video id="8.Firefight-particles" src="https://googledrive.com/host/0B_gBQSJQBKcjTzJ2bDVhWDhxSjQ/8.Firefight-particles.webm" controls></video>
+<br/>
+<br/>
+The <span class="vskeyword">gun's barrel</span> noticeably explodes upon every shot, the <span class="vskeyword">bullets leave pixel traces</span> and the <span class="vskeyword">shells burn for a while</span>!<br/>
+And have you noticed yet another thing unfamiliar to you...?<br/>
+<br/> 
+<img src="{{ site.img_dir }}10.Cyan-machete.gif"/><br/>
+<br/>
+That's right!<br/>
+It's a brand new experimental weapon we've got our hands on.<br/>
+A friend of mine will be working on melee fighting system in the meantime.<br/>
+<br/>
+That would be it about recent progress.<br/>
+<br/>
+In the nearest future, I'm certainly going to do something about these countless bullet shells - <br/>
+just shoot for a while and they can be found everywhere! It's fine if it's singleplayer, but I totally cannot afford sharing state of them all across multiple network clients.<br/>
+The approach I'll probably stick to is not exactly constraining their lifetime, for I hate deleting game entities for no clear reason;<br/>
+instead, I'll make it look like a shell attracts every other shell using a physical force;<br/>
+whenever two shells touch, they react and form a singular object called <span class="vstype">Anomaly</span> to whom each close enough shell will converge.<br/>   
+<br/>
+Something similar will necessarily need to be done about <span class="vskeyword">stackable objects</span> - <br/>
+some griefer who buys 500 machine gun bullets and drops them one by one to the ground as physical bodies is the last thing I want;<br/>
+I will counter this by similarly converging item charges close to each other and stacking them automatically.<br/> 
+<br/>
+I'm also going to make some neat circular <span class="vskeyword">health/ammo HUD</span> and maybe something that would work as <span class="vskeyword">shield/mana</span>?<br/>
+<br/>
+Last but not least, I just had to record this lovely <span class="vskeyword">motorcycle akimbo</span>:<br/>
+<br/>
+<br/>
+<video id="9.Motorcycle-firearms-particles" src="https://googledrive.com/host/0B_gBQSJQBKcjTzJ2bDVhWDhxSjQ/9.Motorcycle-firearms-particles.webm" controls></video>
+<br/>
+<br/>
+Stay tuned for more!
