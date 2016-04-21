@@ -9,7 +9,7 @@ I wanted to complete several things before this write-up.<br/>
 <br/>
 First and foremost, <span class="vstype">firearm recoil</span>!<br/>
 The crosshair gets an invisible physical body to whom I apply an impulse whenever a shot is fired.<br/> 
-It is completely deterministic so you could basically learn the force pattern.<br/>
+It is completely deterministic so you could basically learn the force pattern:<br/>
 <br/>
 <br/>
 <video id="7.Deterministic-recoil" src="{{ site.img_dir }}7.Deterministic-recoil.webm" controls></video>
@@ -18,14 +18,14 @@ It is completely deterministic so you could basically learn the force pattern.<b
 In the clip above, my mouse controller remains motionless all the time.<br/>
 The whole displacement results therefore from the weapon's kickback.<br/>
 Notice that regardless of recoil, the bullet is always launched exactly towards the crosshair with pinpoint accuracy.<br/>
-<span class="vstype">New weapons by the way</span>! That was me shooting a <span class="vskeyword">submachine gun</span> and there's also <span class="vskeyword">semi-automatic pistol</span>.<br/>
+<span class="vstype">New weapons by the way</span>! That was me shooting a <span class="vskeyword">submachine gun</span> and there's also a <span class="vskeyword">semi-automatic pistol</span>.<br/>
 <br/> 
 Secondly, <span class="vstype">bullet traces</span>!<br/>
 Some of the poorly written simulations fail to duly visualize the logical step at which bullet's destruction takes place;<br/>
-upon integration of its position and detecting the final collision, they simply dispose of the bullet and it is never rendered at the exact point of impact.<br/>
+upon integration of its position and detecting the final collision, they simply dispose of the bullet and forget to render it at the exact point of impact.<br/>
 <br/>
 Watch the above video once again.<br/>
-Bullets randomly stretch as they fly and later they shrink exactly at where they are supposed to die.<br/>
+Bullets randomly stretch as they fly (to introduce some variation) and later they shrink exactly at where they are supposed to die.<br/>
 They disappear only at the moment they become zero width through smooth contraction.<br/>
 As for me, this makes up for a seamless hitting experience.<br/>
 <br/>
