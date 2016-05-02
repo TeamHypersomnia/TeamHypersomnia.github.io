@@ -57,7 +57,7 @@ Notes on the circular bars of HUD:<br/>
 <span class="vsenum">They are generated procedurally <span class="vsparam"> (using midpoint circle algorithm)</span>.</span><br/>As such, I'm able to instantly resize them and add borders/colors however I please without touching the graphics editor.<br/>They'll probably be smaller for things like vehicle parts' healths.<br/>
 <br/>
 <span class="vsenum">They are rendered with a special-purpose angle-cutoff shader, instead of rotated.</span><br/>
-This notably improves their quality, especially since they are meant to accompany pixel-artish figures.<br/>
+This avoids artifacts of nearest-neighbor filtering and therefore improves quality of the bars. This is important because they are meant to accompany pixel-artish figures.<br/>
 <br/>
 <div class="spacer"></div>
 <br/>

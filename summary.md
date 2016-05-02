@@ -55,21 +55,9 @@ permalink: /summary/
 [<a class="vsenum" href="{{ "/screenshots"| prepend: site.baseurl }}">More screenshots</a>]
 <br/>
 <br/>
-  <span class="vscomment">// Why some of the formerly seen features are absent in the current version? Is the project tending in a backward direction?</span><br/><br/>
-  By all means, no:<br/>
-  <a class="vstype">Hypersomnia is currently undergoing a major rewrite.</a><br/>
-
-  <br/>
-  The act of writing things anew is a common practice in the world of game development.<br/>
-  This time however is sure to be the last, and whatever you see in the latest screenshots will nevermore disappear in the future versions, unless replaced with something better.<br/>
-  <br/>
-  <span class="vsparam">(The game has an already playable <a class="vsenum" href="https://www.youtube.com/watch?v=Z622YeKcv9k">singleplayer version</a> with nasty enemy AI,<br/>
-  it is however a dirty prototype; as such, it needed a great deal of polish for multiplayer over the network.<br/> 
-  <br/>Eventually I rewrote it and worked on pixel-art lighting in the meantime; <br/>as a result, I have a working server which lets several people connect, pick a gun or an axe into their inventory and shoot each other in a pixely cathedral.<br/>
-  Unfortunately, it is mostly scripted - framerate drops with just four people shooting at the same time and the game becomes unplayable.<br/>
-  Due to that, Hypersomnia is being rewritten into a high-performance language which will hopefully let me handle hundreds of players in real-time.)<br/><br/>
-  </span>
-
+<a class="vsenum" href="https://www.youtube.com/watch?v=Z622YeKcv9k">Here you can watch a very old singleplayer version with nasty enemies.</a>
+<br/>
+<br/>
   </div>
   <span class="vscomment" id="TECHNICALITIES">// Technicalities </span>
     <br/>
@@ -84,11 +72,11 @@ permalink: /summary/
     * <a href="https://github.com/ivanfratric/polypartition" class="vsenum">polypartition</a><span class="vscomment"> // polygon partitioning library </span><br/>
     * <a href="https://www.freetype.org/" class="vsenum">FreeType</a><span class="vscomment">  // font glyph rendering </span><br/>
     <br/>
-    The rest being the craftsmanship of the author.
-    
+    The rest being the craftsmanship of the author.<br/>
     <br/>
-<br/>
-
+I am currently in the process of rewriting some of the major features from <span class="vstype">Lua</span> into <span class="vstype">C++</span>,<br/>most notably working multiplayer server (can connect with 3-4 players and shoot each other), pixel-art lighting and enemy AI.<br/>
+This is necessary as I want to be able to handle tens or maybe hundreds of simultaneous players easily.<br/> 
+    <br/>
   <span id="JOIN" class="vscomment">// Join </span>
 <br/>
 <br/>
