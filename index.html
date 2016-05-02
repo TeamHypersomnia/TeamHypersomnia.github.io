@@ -11,13 +11,20 @@ layout: default
         <a class="vstext" href="{{ post.url }}"><span class="vsparam">[</span><span class="vsnumber">{{ post.date | date: "%d" }}</span>.<span class="vsnumber">{{ post.date | date: "%m" }}</span>.<span class="vsnumber">{{ post.date | date: "%Y" }}</span><span class="vsparam">]</span> <span class="vscomment">{{post.date | date: "// %H:%M"}}</span> </a>
           <a style="font-style:italic" class="vsparam replies-count" href="{{ post.url | prepend: site.baseurl }}">(Be the first to comment!)</a><br/><br/>
             
+            {% if post.excerpt_separator %}
+            {{ post.excerpt }} <br/>
+            <a class="vsenum" href="{{ post.url }}"><span class="vsparam">[</span>Read more...<span class="vsparam">]</span></a>
+         {% else %}
                {{ post.content | truncatewords:75}}
                
                {% assign wordCount = post.content | number_of_words %}
 
-  			{% if wordCount > 75 %}
+        {% if wordCount > 75 %}
            </p><a class="vsenum" href="{{ post.url }}"><span class="vsparam">[</span>Read more...<span class="vsparam">]</span></a>
-   			 {% endif %}
+         {% endif %}
+
+         {% endif %}
+
 <br/><br/>
 
 <div style="width:100%; height: 5px; border-bottom: 1px dotted rgb(60, 60, 60)"></div>
