@@ -15,7 +15,7 @@ permalink: /summary/
 
 
   <span style="font-size:21px">Summary</span>
-</span> <br/>
+<br/>
 
   <span class="vsparam">Jump to: [<a class="vsenum" href="{{ "/summary/#TECHNICALITIES "| prepend: site.baseurl }}">Technicalities</a>]
 [<a class="vsenum" href="{{ "/summary/#JOIN "| prepend: site.baseurl }}">Join</a>]
