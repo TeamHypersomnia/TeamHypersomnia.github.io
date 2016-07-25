@@ -45,7 +45,7 @@ Last but not least, I can already save and load the entire game state!<br/>
 I did some testing and it occurs that loading a <span class="vsnumber">52 MB</span> universe takes around <span class="vsnumber">0.64s</span>,<br/>
 whereas saving it can be as fast as <span class="vsnumber">0.25s</span>.<br/>
 <br/>
-Additionally, duplication of the entire cosmos is a trivial operation in the new architecture: it is not even a serialization/deserialization cycle.<br/>
+Additionally, duplication of the entire cosmos is a trivial operation in the new architecture: in particular, it ain't some brutal serialization/deserialization cycle.<br/>
 This is important for <span class="vstype">frequent backups</span> server-side, for <span class="vstype">delta compression</span> and for <span class="vstype">client-side prediction</span>.<br/>
 All of these mechanisms need to maintain a single or multiple copies of the cosmos, perhaphs for further manipulation.<br/>
 <br/>
