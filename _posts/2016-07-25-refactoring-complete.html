@@ -1,0 +1,57 @@
+---
+layout: post
+title:  Refactoring complete, <span class="vsenum">Linux port</span> arriving soon, working save/load
+date:   2016-07-25 20:20:00 +0200
+comments_identifier: refactoringcomplete
+excerpt_separator: <!--more-->
+---
+After two months of intense labour, I have finally launched Hypersomnia again!<br/>
+<br/>
+Throughout this seemingly neverending treatment, the following has been achieved:
+<br/>
+<ul>
+<li>Made significant state of the simulation <span style="font-style: italic;">devoid of</span> <span class="vstype">pointers and references</span>, enabling trivial duplication and serialization.</li>
+<li>Provided <span class="vstype">constness guarantees</span> for access to entities and components, ensuring that the model stays unalterable during rendering-time, further enforcing <span class="vstype">determinism of the simulation</span>.</li>
+<li>The concerns of an <span class="vstype">entity</span> and <span class="vstype">definition</span> thereof were gracefully disentangled owing to my paradigm.</li>
+<li>Practically the whole entity-component-system became type-safe (on the fundamental level).</li>
+<li>I learned a whole lot of metaprogramming which may or may not be considered an advantage.</li>
+<li class="vsparam">Unfortunately, GUI is only partially refactored. Static polymorphism turns out to be a handful, so GUI is temporarily disabled. I will come back later to it.</li>
+</ul>
+<!--more-->
+The approaches I follow are most of the time experimental; whether it will backfire in some distant future I may not know.<br>
+Still, the underlying concepts are so orderly that I am destined to once write a treatise thereupon.<br/>
+One may find my dedication unreasoning, but I follow these principles primarily in hopes that they work in favour of knowledge of all.<br/>
+<br/>
+<br/>
+<div style="width:100%; height: 15px; border-top: 1px solid rgb(60, 60, 60)"></div>
+
+<span style="font-size:21px">I shall also announce that <span class="vsenum">Linux port of Hypersomnia</span> is on the way!<br/></span>
+<br/>
+My dear high school friend <a class="vsenum" href="https://github.com/ArcCha"><span class="vsparam">[</span>Adam<span class="vsparam">]</span></a>, who happens to be a profound enthusiast of the OS, has bravely undertaken this task of migration.<br/>
+He delved promptly into my inscrutable codebase and flicked through semantics recondite to say the least;<br/>
+as a result, around half of the framework compiles successfully with GCC.<br/>
+<br/>
+I plan to support both the server and the client on Windows and Linux systems.
+<br/>
+<br/>
+<br/>
+<div style="width:100%; height: 15px; border-top: 1px solid rgb(60, 60, 60)"></div>
+Last but not least, I can already save and load the entire game state!<br/>
+<br/>
+<img src="{{ site.img_dir }}benchmarks.png"/>
+<br/>
+<span class="vsparam" style="font-style: italic;">(Profiler view enabled)</span><br/>
+<br/>
+I did some testing and it occurs that loading a <span class="vsnumber">52 MB</span> universe takes around <span class="vsnumber">0.64s</span>,<br/>
+whereas saving it can be as fast as <span class="vsnumber">0.25s</span>.<br/>
+<br/>
+Additionally, duplication of the entire cosmos is a trivial operation in the new architecture: it is not even a serialization/deserialization cycle.<br/>
+This is important for <span class="vstype">frequent backups</span> server-side, for <span class="vstype">delta compression</span> and for <span class="vstype">client-side prediction</span>.<br/>
+All of these mechanisms need to maintain a single or multiple copies of the cosmos, perhaphs for further manipulation.<br/>
+<br/>
+Since serialization is up and running, I may now revisit the world of networking.<br/>
+<br/>
+<a class="vsenum" href="https://github.com/TeamHypersomnia/Augmentations/tree/master/3rdparty"><span class="vsparam">[</span>Some of the 3rdparties changed!<span class="vsparam">]</span></a><br/>I made heavy use of Git Submodules to properly link the repos and now the project compiles from scratch using no prebuilt libraries.<br/>
+<br/>
+<span class="vsparam" style="font-style: italic;">We Carried An Entire Universe Across A Bridge Tonight.</span><br/>
+Stay tuned for more.
