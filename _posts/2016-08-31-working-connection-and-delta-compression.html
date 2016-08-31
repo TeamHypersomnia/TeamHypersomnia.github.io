@@ -52,6 +52,9 @@ Now this is huge, especially for the server, since <span class="vskeyword">cloni
 Having successfully <span class="vskeyword">cloned</span> a cosmos, you can always offload related work to some worker thread and continue simulating the main game world without further interruption.<br/>
 <br/>
 <div style="width:100%; height: 15px; border-top: 1px solid rgb(60, 60, 60)"></div>
+I made my <a href="http://gamedev.stackexchange.com/a/34193/16982" class="vstype">rectangle packing algorithm</a> (used in the game to pack textures) available as a <a href="https://github.com/TeamHypersomnia/rectpack2D" class="vstype">standalone repository</a> in our <a style="color:white" href="https://github.com/TeamHypersomnia">TeamHypersomnia</a>.<br/>
+<br/>
+<div style="width:100%; height: 15px; border-top: 1px solid rgb(60, 60, 60)"></div>
 Delta compression is also complete. It turned out to be <a class="vstype" href="https://github.com/TeamHypersomnia/Augmentations/blob/master/game/transcendental/cosmic_delta.cpp"> quite a verbose beast</a>,
 to the point that I've put together several unit tests.<br/>
 Thanks to delta, the server can transfer a <span class="vsnumber">40 MB</span> universe to the newly connected client with maybe just several kilobytes worth of network traffic.<br/>
