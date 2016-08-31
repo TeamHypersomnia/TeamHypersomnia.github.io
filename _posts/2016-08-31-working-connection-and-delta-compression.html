@@ -1,0 +1,76 @@
+---
+layout: post
+title:  Working connection (ENet), delta compression, stress tests of determinism
+date:   2016-08-31 03:59:00 +0200
+comments_identifier: workingconnection
+excerpt_separator: <!--more-->
+---
+
+And so I've teached them simulations to talk to each other.<br/>
+To revisit my protocol code, two years old at that, was surely a fascinating journey into myself of time past.<br/>
+<br/>
+There's a catch however: I am still working on <a class="vstype" href="https://en.wikipedia.org/wiki/Client-side_prediction">client-side input prediction</a>.<br/>
+This is not at all simple to get right in a game with this kind of dynamics, not to mention physics-based projectiles.<br/>
+If I let the client be autoritative over bullet collisions...<br/>
+...as a <span class="vskeyword">victim</span> you'll be getting damage even though the bullet flew somewhere else on your screen;<br/>
+to make it worse, the <span class="vskeyword">attacker</span> may even be facing a completely different direction.<br/>
+These problems arise because the other player sees the past version of you.</br>
+</br>  
+Contrary to <span class="vstype">FPS</span>es, this is a <span class="vstype">2D game</span> - <br/>
+canvas reveals way more imperfection than a 3D world with huge horizons and blazingly fast bullets.<br/>
+</br>
+I did this before; it was the scripted (<a class="vsenum">Lua</a>) version of Hypersomnia and it worked not that bad.<br/>
+If I don't come up with something fancy (like, some <span class="vstype">astral body</span> being a reflection of the past self?), I will stick to the good old approach and live with the consequences.<br/>
+<br/>
+<img src="{{ site.img_dir }}twoclients.png"/><br/>
+<span class="vsparam" style="font-style: italic;">(In case you're wondering, yes, I love to have these messy figures from the profiler all over the place.<br/>I recognize it as a form of beauty. I've even redirected the console output to text rendered in-game, as seen in right top corners)</span><br/>
+<br/>
+The screenshot above is nothing else than a test of two independent client simulations connected to a local server,<br/>
+all three in a <span class="vstype">single process</span>, so tapping <span class="vsenum">F5</span> once in <span class="vstype">Visual Studio</span> completely setups my cosmic laboratory.<br/>
+<br/>
+Here I must necessarily brag about my architecture <span class="vsparam">(or put more gently, my habit to keep the code reasonably clean)</span>,<br/>
+for I am perfectly able to <span class="vstype">deterministically replay</span> both the server and the two client sessions visible on the screen.<br/>
+<!--more-->
+<br/>
+This possibility is a huge advantage to say the least.<br/>
+It practically lets the server to have <span class="vstype">backups of every step of the simulation</span> and as a player,<br/>
+you will be able to accurately replay your <span class="vskeyword">gaming session</span> at any moment.<br/>
+Both of these perks with <span class="vstype">negliglible overhead</span>, since <span class="vstype">inputs</span> are several orders of magnitude lighter than state.<br/>
+<br/>
+The recording itself is so cheap that I might even consider leaving it enabled by default in clients.<br/>
+This way, precious memories of raiding <span class="vstype">Metropolis</span> with a bunch of <span class="vstype">Resistance</span> friends will never be lost.</br>
+Plus, you will always have conclusive evidence for cheating.<br/>
+<br/>
+<div style="width:100%; height: 15px; border-top: 1px solid rgb(60, 60, 60)"></div>
+In the meantime, I made some drastic improvements to how the game makes a copy of the world.<br>
+Using per-field <span class="vstype">serialization</span>, cloning a <span class="vsnumber">40 MB</span> world took around <span class="vsnumber">12 ms</span> and now it takes around <span class="vsnumber">5 </span> ms.<br/> 
+The new <span class="vskeyword">cloning</span> function is basically a bunch of <span class="vskeyword">memcpy</span> calls, one call per component type.<br/>
+<span class="vsparam">(To achieve this I needed to make the state completely devoid of pointers </span>for real<span class="vsparam">, to the extent that I had to implement constant-sized versions of vector and map)</span><br/> 
+<br/>
+Now this is huge, especially for the server, since <span class="vskeyword">cloning</span> itself is the bottleneck of operations like occasional state backup and/or delta compression.<br/>
+Having successfully <span class="vskeyword">cloned</span> a cosmos, you can always offload related work to some worker thread and continue simulating the main game world without further interruption.<br/>
+<br/>
+<div style="width:100%; height: 15px; border-top: 1px solid rgb(60, 60, 60)"></div>
+Delta compression is also complete. It turned out to be <a class="vstype" href="https://github.com/TeamHypersomnia/Augmentations/blob/master/game/transcendental/cosmic_delta.cpp"> quite a verbose beast</a>,
+to the point that I've put together several unit tests.<br/>
+Thanks to delta, the server can transfer a <span class="vsnumber">40 MB</span> universe to the newly connected client with maybe just several kilobytes worth of network traffic.<br/>
+My <a class="vstype" href="https://github.com/Kartezjan">fellow philosopher</a> helped a bit with <a class="vstype" href="https://github.com/TeamHypersomnia/Augmentations/blob/master/augs/misc/delta_compression.cpp"> raw byte-wise delta encoding</a>.<br/>
+<br/>
+<div style="width:100%; height: 15px; border-top: 1px solid rgb(60, 60, 60)"></div>
+Last but not least, I've implemented <span class="vstype">stress tests of determinism</span>. <span class="vsparam">(this is sort of a developer tool more than anything else, but still deserves a honorable mention)</span> <br/>
+I'm even considering making this a unit test.</br>
+<br/>
+<img src="{{ site.img_dir }}determinismtest.png"/><br/>
+<br/>
+Right now you simply set launch mode to <span class="vsenum">LOCAL_DETERMINISM_TEST</span> and decide upon <span class="vsenum">determinism_test_cloned_cosmoi_count</span>, whose name speaks for itself.<br/>
+This will launch the game as always, but with several identically initialized <span class="vskeyword">worlds</span> in the background.<br/>
+Your <span class="vstype">inputs</span> (or ones extracted from a <span class="vstype">recording file</span>) will be applied to each single <span class="vskeyword">world</span> in existence.<br/>
+After every logic step, it serializes all <span class="vskeyword">worlds</span> and compares the byte contents. They must remain identical down to a single bit.<br/>
+If they're not, it stops the simulation and tells you the faulty step number. Obviously you can replay it later so that you can delve deeper into the issue.<br/>
+<br/>
+This will totally come in handy because as of currently, my netcode needs the simulation be <span class="vstype">completely deterministic</span> (and when I say completely I mean <span class="vskeyword">bit-wise</span>).<br/>
+This tool is going to catch even the tiniest divergence.<br/>
+<br/>
+<div style="width:100%; height: 15px; border-top: 1px solid rgb(60, 60, 60)"></div>
+That would be all about last month's progress.<br/>
+Expect some playable multiplayer soon!<br/>
