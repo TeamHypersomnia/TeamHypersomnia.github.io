@@ -65,7 +65,7 @@ I'm even considering making this a unit test.</br>
 Right now you simply set launch mode to <span class="vsenum">LOCAL_DETERMINISM_TEST</span> and decide upon <span class="vsenum">determinism_test_cloned_cosmoi_count</span>, whose name speaks for itself.<br/>
 This will launch the game as always, but with several identically initialized <span class="vskeyword">worlds</span> in the background.<br/>
 Your <span class="vstype">inputs</span> (or ones extracted from a <span class="vstype">recording file</span>) will be applied to each single <span class="vskeyword">world</span> in existence.<br/>
-After every logic step, it serializes all <span class="vskeyword">worlds</span> and compares the byte contents. They must remain identical down to a single bit.<br/>
+After every logic step, the test serializes all <span class="vskeyword">worlds</span> and compares the byte contents. They must remain identical down to a single bit.<br/>
 If they're not, it stops the simulation and tells you the faulty step number. Obviously you can replay it later so that you can delve deeper into the issue.<br/>
 <br/>
 This will totally come in handy because as of currently, my netcode needs the simulation be <span class="vstype">completely deterministic</span> (and when I say completely I mean <span class="vskeyword">bit-wise</span>).<br/>
