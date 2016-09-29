@@ -7,9 +7,9 @@ body {
   margin-right: 5%;
   font-family: Consolas,monaco,monospace !important; 
   font-size: 12px; 
-  color: rgb(220, 220, 220);
+  color: rgb(170, 170, 170);
   line-height: 1.5;
-  background-color: rgb(30, 30, 30);
+  background-color: rgb(0, 0, 0);
 }
 
 .language-cpp {
@@ -45,7 +45,7 @@ iframe {
 }
 
 .vstext {
-  color:rgb(220, 220, 220);
+  color:rgb(170, 170, 170);
 }
 .vscomment {
   color: rgb(87, 166, 74);
