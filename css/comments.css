@@ -22,7 +22,7 @@ body {
     margin-top: 5px;
 }
 .comment-form form{
-    background: rgba(30, 30, 30, 0.1);
+    background: rgba(0, 0, 0, 0.1);
     width: 500px;
     padding: 0px;
 }
@@ -36,7 +36,7 @@ body {
     border: 1px solid #333;
     border-radius: 0px;
     color: rgb(220, 220, 220);
-    background-color: rgb(30, 30, 30);
+    background-color: rgb(0, 0, 0);
     font-family: 'Consolas' !important; 
     font-size: 12px; 
     box-sizing: border-box;
