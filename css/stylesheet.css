@@ -36,12 +36,15 @@ iframe {
 {
   color: rgb(200, 200, 200);
 }
+.subjectheader {
+	color:white;
+}
 
 .vskeyword,
 .highlight .kt,
 .highlight .k
 {
-  color: rgb(86, 156, 214);
+  color: rgb(78, 201, 176);
 }
 
 .vstext {
@@ -61,7 +64,7 @@ iframe {
 
 
 .vsstring {
-  color: rgb(214, 157, 133);
+  color: rgb(86, 156, 214);
 }
 
 .highlight .mi,

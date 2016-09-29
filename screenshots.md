@@ -4,7 +4,7 @@ title: Screenshots
 permalink: /screenshots/
 ---
   <span class="vscomment"><!-- // =============================================================================================================
-<br/>-->// Chosen in-game pictures
+-->// Chosen in-game pictures
   </span>
 <br/>
 <br/>

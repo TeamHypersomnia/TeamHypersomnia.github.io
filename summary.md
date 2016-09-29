@@ -4,17 +4,13 @@ title: Summary
 permalink: /summary/
 ---
 
-<div style="text-align: center">
-
-</div>
 <div>
-<br/>
  <!-- <span class="vscomment">// =============================================================================================================
 <br/>
   </span> -->
 
 
-  <span style="font-size:21px">Summary</span>
+  <span class="subjectheader">Summary</span>
 <br/>
 
   <span class="vsparam">Jump to: [<a class="vsenum" href="{{ "/summary/#TECHNICALITIES "| prepend: site.baseurl }}">Technicalities</a>]
