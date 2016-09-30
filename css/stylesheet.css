@@ -119,3 +119,12 @@ a {
 .nounderlinelink:hover {
  text-decoration: overline !important;
 }
+
+#one-true { overflow: hidden; }
+#one-true .col {
+  width: 33%;
+  padding: 0px 0% 0;
+  float: left;
+  margin-bottom: -99999px;
+  padding-bottom: 99999px;
+}
