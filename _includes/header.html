@@ -39,6 +39,35 @@ You are on the <span class="vskeyword"> official homepage </span> <span style="c
 <!--<span class="vsprepro">#define</span> <span class="vsmacro">UNDER_CONSTRUCTION</span> <span class="vsnumber">1</span>-->
 
 <a href="http://hypersomnia.pl"><img src="{{ "/dove.gif "| prepend: site.baseurl }}" style="text-align: center; border: 0"/></a><br/>
+
+<div id="serverwidget">
+
+</div>
+
+<script>
+function load_server_widget() {
+  var xhttp = new createCORSRequest("GET", "http://hypexperientia.ddns.net");
+   if (!xhttp) {
+    alert('CORS not supported');
+    return;
+  }
+
+  xhttp.onload = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("serverwidget").innerHTML = this.responseText;
+    }
+  };
+
+xhttp.onerror = function() {
+};
+
+  xhttp.send();
+}
+  
+
+setInterval(load_server_widget, 500);
+</script>
+
 <div id="serverwidget">
 <iframe seamless="seamless" scrolling="no" frameborder="0" src="http://hypexperientia.ddns.net" style="height: 0px; width:100%;"></iframe>
 </div>
