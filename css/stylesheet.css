@@ -30,6 +30,12 @@ iframe {
                 overflow: hidden;
 }
 
+#serverwidget {
+                position:relative; 
+                height: 100%;
+                overflow: hidden;
+}
+
 .vsfunction,
 .highlight .nf,
 .highlight
