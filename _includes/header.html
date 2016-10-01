@@ -40,8 +40,17 @@ You are on the <span class="vskeyword"> official homepage </span> <span style="c
 
 <a href="http://hypersomnia.pl"><img src="{{ "/dove.gif "| prepend: site.baseurl }}" style="text-align: center; border: 0"/></a><br/>
 
-<div id="serverwidget">
 
+<div id="serverwidget_online" style="display:none">
+<span style="color:white">Experimental test server is <span style="color:rgb(34, 197, 76)">Online</span></span><br/>
+</div>
+
+<div id="serverwidget_offline" style="display:none">
+<span style="color:white">Experimental test server is <span style="color:red">Offline</span></span>
+</div>
+
+<div id="serverwidget">
+<span style="color:white">Experimental test server is <span style="color:red">Offline</span></span>
 </div>
 
 <script>
@@ -54,18 +63,23 @@ function load_server_widget() {
 
   xhttp.onload = function() {
     if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("serverwidget").innerHTML = this.responseText;
+      document.getElementById("serverwidget").innerHTML = document.getElementById("serverwidget_online").innerHTML + this.responseText;
     }
   };
 
-xhttp.onerror = function() {
-};
+var offline_callback = function() {
+	  document.getElementById("serverwidget").innerHTML = document.getElementById("serverwidget_offline").innerHTML;
+	};
+
+xhttp.timeout = 2000;
+	xhttp.onerror = offline_callback; 
+	xhttp.ontimeout = offline_callback; 
 
   xhttp.send();
 }
   
 
-setInterval(load_server_widget, 500);
+setInterval(load_server_widget, 2000);
 </script>
 
 <div id="serverwidget">
