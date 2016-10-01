@@ -71,7 +71,7 @@ var offline_callback = function() {
 	  document.getElementById("serverwidget").innerHTML = document.getElementById("serverwidget_offline").innerHTML;
 	};
 
-xhttp.timeout = 2000;
+xhttp.timeout = 5000;
 	xhttp.onerror = offline_callback; 
 	xhttp.ontimeout = offline_callback; 
 
@@ -79,7 +79,7 @@ xhttp.timeout = 2000;
 }
   
 
-setInterval(load_server_widget, 2000);
+setInterval(load_server_widget, 1000);
 </script>
 
 <div id="serverwidget">
