@@ -56,6 +56,7 @@ iframe {
 .vstext {
   color:rgb(170, 170, 170);
 }
+
 .vscomment {
   color: rgb(87, 166, 74);
 }
@@ -68,6 +69,9 @@ iframe {
   color: rgb(78, 201, 176);
 }
 
+.onlinegreen {
+  color: rgb(34, 197, 76);
+}
 
 .vsstring {
   color: rgb(86, 156, 214);
