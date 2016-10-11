@@ -54,6 +54,38 @@ You are on the <span class="vskeyword"> official homepage </span> <span style="c
 </div>
 
 <script>
+
+var is_online = false;
+var last_online = "none";
+
+function last_online_updater() {
+  if(is_online == false) {
+  var xhttp = new createCORSRequest("GET", "http://patrykcysarz.pl/comment-system/web/stats/last-update/get");
+   if (!xhttp) {
+    alert('CORS not supported');
+    return;
+  }
+
+  xhttp.onload = function() {
+    if (this.readyState == 4 && this.status == 200) {
+    //alert('rdy');
+      last_online = document.body.textContent; 
+    }
+  };
+
+var offline_callback = function() {
+    //alert('off');
+    last_online = "noneoff";
+  };
+
+xhttp.timeout = 5000;
+  xhttp.onerror = offline_callback; 
+  xhttp.ontimeout = offline_callback; 
+
+  xhttp.send();
+  }
+}
+
 function load_server_widget() {
   var xhttp = new createCORSRequest("GET", "http://hypexperientia.ddns.net");
    if (!xhttp) {
@@ -63,12 +95,17 @@ function load_server_widget() {
 
   xhttp.onload = function() {
     if (this.readyState == 4 && this.status == 200) {
+      is_online = true;
       document.getElementById("serverwidget").innerHTML = document.getElementById("serverwidget_online").innerHTML + this.responseText;
     }
   };
 
 var offline_callback = function() {
-	  document.getElementById("serverwidget").innerHTML = document.getElementById("serverwidget_offline").innerHTML;
+    is_online = false;
+    var offline_content = document.getElementById("serverwidget_offline").innerHTML; 
+    offline_content += "<br/>" + last_online;
+
+	  document.getElementById("serverwidget").innerHTML = offline_content;
 	};
 
 xhttp.timeout = 5000;
@@ -80,6 +117,7 @@ xhttp.timeout = 5000;
   
 
 setInterval(load_server_widget, 1000);
+setInterval(last_online_updater, 5000);
 </script>
 
 <div id="serverwidget">
