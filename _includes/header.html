@@ -69,7 +69,7 @@ function last_online_updater() {
   xhttp.onload = function() {
     if (this.readyState == 4 && this.status == 200) {
     //alert('rdy');
-      last_online = document.body.textContent; 
+      last_online = this.responseText; 
     }
   };
 
