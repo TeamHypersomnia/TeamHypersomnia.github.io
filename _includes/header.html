@@ -46,11 +46,11 @@ You are on the <span class="vskeyword"> official homepage </span> <span style="c
 </div>
 
 <div id="serverwidget_offline" style="display:none">
-<span style="color:white">Experimental test server is currently <span style="color:red">Offline</span></span>
+<span style="color:white">Experimental test server is currently <span style="color:red">Offline</span></span><br/>Last seen: 
 </div>
 
 <div id="serverwidget">
-<span style="color:white">Experimental test server is currently <span style="color:red">Offline</span></span>
+<span style="color:white">Experimental test server is currently <span style="color:red">Offline</span></span><br/>Last seen: 
 </div>
 
 <script>
@@ -103,7 +103,7 @@ function load_server_widget() {
 var offline_callback = function() {
     is_online = false;
     var offline_content = document.getElementById("serverwidget_offline").innerHTML; 
-    offline_content += "<br/>" + last_online;
+    offline_content += last_online;
 
 	  document.getElementById("serverwidget").innerHTML = offline_content;
 	};
