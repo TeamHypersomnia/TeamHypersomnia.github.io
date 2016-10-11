@@ -56,7 +56,7 @@ You are on the <span class="vskeyword"> official homepage </span> <span style="c
 <script>
 
 var is_online = false;
-var last_online = "none";
+var last_online = " ";
 
 function last_online_updater() {
   if(is_online == false) {
@@ -75,7 +75,7 @@ function last_online_updater() {
 
 var offline_callback = function() {
     //alert('off');
-    last_online = "noneoff";
+    last_online = " ";
   };
 
 xhttp.timeout = 5000;
@@ -85,6 +85,49 @@ xhttp.timeout = 5000;
   xhttp.send();
   }
 }
+
+  function offline_clock_ticker() {
+var offline_content = " ";
+
+    if(last_online.length > 1) {
+      var ms = Math.abs(new Date() - new Date(last_online.replace(/-/g,'/')));
+
+      var x = ms / 1000;
+      var seconds = parseInt(x % 60);
+      x /= 60;
+      var minutes = parseInt(x % 60);
+      x /= 60;
+      var hours = parseInt(x % 24);
+      x /= 24;
+      var days = parseInt(x);
+
+      if(days > 0)
+offline_content += days + "d ";
+      if(hours > 0)
+offline_content += hours + "h ";
+      if(minutes > 0)
+offline_content += minutes + "m ";
+      if(seconds > 0)
+offline_content += seconds + "s ";        
+
+      offline_content += "ago";
+    }
+
+    document.getElementById("offlineclock").innerHTML = offline_content;
+  }
+
+  function msToTime(duration) {
+        var milliseconds = parseInt((duration%1000)/100)
+            , seconds = parseInt((duration/1000)%60)
+            , minutes = parseInt((duration/(1000*60))%60)
+            , hours = parseInt((duration/(1000*60*60))%24);
+
+        hours = (hours < 10) ? "0" + hours : hours;
+        minutes = (minutes < 10) ? "0" + minutes : minutes;
+        seconds = (seconds < 10) ? "0" + seconds : seconds;
+
+        return hours + ":" + minutes + ":" + seconds + "." + milliseconds;
+    }
 
 function load_server_widget() {
   var xhttp = new createCORSRequest("GET", "http://hypexperientia.ddns.net");
@@ -102,10 +145,8 @@ function load_server_widget() {
 
 var offline_callback = function() {
     is_online = false;
-    var offline_content = document.getElementById("serverwidget_offline").innerHTML; 
-    offline_content += last_online;
-
-	  document.getElementById("serverwidget").innerHTML = offline_content;
+	  document.getElementById("serverwidget").innerHTML = document.getElementById("serverwidget_offline").innerHTML + '<span id="offlineclock"></span>';
+    offline_clock_ticker();
 	};
 
 xhttp.timeout = 5000;
@@ -115,10 +156,12 @@ xhttp.timeout = 5000;
   xhttp.send();
 }
   
+
 load_server_widget();
 last_online_updater();
 setInterval(load_server_widget, 1000);
 setInterval(last_online_updater, 5000);
+setInterval(offline_clock_ticker, 500);
 </script>
 
 <div id="serverwidget">
