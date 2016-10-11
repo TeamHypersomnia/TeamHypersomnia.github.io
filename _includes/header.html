@@ -50,7 +50,7 @@ You are on the <span class="vskeyword"> official homepage </span> <span style="c
 </div>
 
 <div id="serverwidget">
-<span style="color:white">Experimental test server is currently <span style="color:red">Offline</span></span><br/>Last seen: 
+<span style="color:white">Experimental test server is currently <span style="color:red">Offline</span></span><br/>Last seen: loading...
 </div>
 
 <script>
@@ -111,9 +111,12 @@ offline_content += minutes + "m ";
 offline_content += seconds + "s ";        
 
       offline_content += "ago";
-    }
 
     document.getElementById("offlineclock").innerHTML = offline_content;
+    }
+    else {
+    document.getElementById("offlineclock").innerHTML = "loading...";
+    }
   }
 
   function msToTime(duration) {
