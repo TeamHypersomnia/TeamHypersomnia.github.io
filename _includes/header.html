@@ -56,7 +56,8 @@ You are on the <span class="vskeyword"> official homepage </span> <span style="c
 <script>
 
 var is_online = false;
-var last_online = " ";
+var success_lastonline = false;
+var last_online = new Date();
 
 function last_online_updater() {
   if(is_online == false) {
@@ -69,13 +70,13 @@ function last_online_updater() {
   xhttp.onload = function() {
     if (this.readyState == 4 && this.status == 200) {
     //alert('rdy');
-      last_online = this.responseText; 
+      last_online = new Date(this.responseText.replace(/-/g,'/')); 
+      success_lastonline = true;
     }
   };
 
 var offline_callback = function() {
     //alert('off');
-    last_online = " ";
   };
 
 xhttp.timeout = 5000;
@@ -89,8 +90,8 @@ xhttp.timeout = 5000;
   function offline_clock_ticker() {
 var offline_content = " ";
 
-    if(last_online.length > 1) {
-      var ms = Math.abs(new Date() - new Date(last_online.replace(/-/g,'/')));
+    if(success_lastonline) {
+      var ms = Math.abs(new Date() -last_online);
 
       var x = ms / 1000;
       var seconds = parseInt(x % 60);
@@ -142,7 +143,7 @@ function load_server_widget() {
   xhttp.onload = function() {
     if (this.readyState == 4 && this.status == 200) {
       is_online = true;
-      last_online = new Date().toISOString();
+      last_online = new Date();
       document.getElementById("serverwidget").innerHTML = document.getElementById("serverwidget_online").innerHTML + this.responseText;
     }
   };
