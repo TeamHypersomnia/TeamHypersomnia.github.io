@@ -15,7 +15,7 @@ permalink: /posts/
     {% else %}
           <a class="vsenum" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
     {% endif %}
-          <a style="font-style:italic" class="vsparam replies-count" href="{{ post.url | prepend: site.baseurl }}">(Be the first to comment!)</a>
+          <a style="font-style:italic" class="vsparam replies-count" href="{{ post.url | prepend: site.baseurl }}">(0 Comments)</a>
           <br/>
     </div>
     {% endfor %}
