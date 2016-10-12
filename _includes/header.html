@@ -38,19 +38,20 @@ You are on the <span class="vskeyword"> official homepage </span> <span style="c
 <br/>
 <!--<span class="vsprepro">#define</span> <span class="vsmacro">UNDER_CONSTRUCTION</span> <span class="vsnumber">1</span>-->
 
-<a href="http://hypersomnia.pl"><img src="{{ "/dove.gif "| prepend: site.baseurl }}" style="text-align: center; border: 0"/></a><br/>
-
+<a href="http://hypersomnia.pl"><img src="{{ "/dove.gif "| prepend: site.baseurl }}" style="text-align: center; border: 0"/></a>
+<br/>
 
 <div id="serverwidget_online" style="display:none">
 <span style="color:white">Experimental test server is <span class="onlinegreen">Online</span></span><br/>
 </div>
 
 <div id="serverwidget_offline" style="display:none">
-<span style="color:white">Experimental test server is currently <span style="color:red">Offline</span></span> <span class="vsparam">[hypexperientia.ddns.net]</span> <br/>Last seen: 
+<span style="color:white">Experimental test server is currently <span style="color:red">Offline</span></span><br/>Last seen: 
 </div>
 
 <div id="serverwidget">
-<span style="color:white">Experimental test server is currently <span style="color:red">Offline</span></span> <span class="vsparam">[hypexperientia.ddns.net]</span><br/>Last seen: loading...
+<span style="color:white">Experimental test server is currently <span style="color:red">Offline</span></span><br/>Last seen: loading...
+<span class="vsparam"><br/>[hypexperientia.ddns.net status report]</span>
 </div>
 <script>
 
@@ -149,7 +150,9 @@ function load_server_widget() {
 
 var offline_callback = function() {
     is_online = false;
-	  document.getElementById("serverwidget").innerHTML = document.getElementById("serverwidget_offline").innerHTML + '<span id="offlineclock"></span>';
+	  document.getElementById("serverwidget").innerHTML = document.getElementById("serverwidget_offline").innerHTML + '<span id="offlineclock"></span>' +
+ '<span class="vsparam"><br/>[hypexperientia.ddns.net status report]</span>';
+    ;
     offline_clock_ticker();
 	};
 
