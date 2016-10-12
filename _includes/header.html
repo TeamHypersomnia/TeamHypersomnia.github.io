@@ -142,6 +142,7 @@ function load_server_widget() {
   xhttp.onload = function() {
     if (this.readyState == 4 && this.status == 200) {
       is_online = true;
+      last_online = new Date().toISOString();
       document.getElementById("serverwidget").innerHTML = document.getElementById("serverwidget_online").innerHTML + this.responseText;
     }
   };
