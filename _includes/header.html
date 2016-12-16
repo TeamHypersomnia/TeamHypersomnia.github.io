@@ -52,7 +52,7 @@ You are on the <span class="vskeyword"> official homepage </span> <span style="c
 
 <div id="serverwidget">
 <span style="color:white">Experimental test server is currently <span style="color:red">Offline</span></span><br/>Last seen: loading...
-<span class="vsparam"><br/>[hypexperientia.ddns.net status report]</span>
+<span class="vsparam"><br/>[universe.hypersomnia.pl status report]</span>
 </div>
 <script>
 
@@ -135,7 +135,7 @@ offline_content += seconds + "s ";
     }
 
 function load_server_widget() {
-  var xhttp = new createCORSRequest("GET", "http://hypexperientia.ddns.net");
+  var xhttp = new createCORSRequest("GET", "http://universe.hypersomnia.pl");
    if (!xhttp) {
     alert('CORS not supported');
     return;
@@ -152,7 +152,7 @@ function load_server_widget() {
 var offline_callback = function() {
     is_online = false;
 	  document.getElementById("serverwidget").innerHTML = document.getElementById("serverwidget_offline").innerHTML + '<span id="offlineclock"></span>' +
- '<span class="vsparam"><br/>[hypexperientia.ddns.net status report]</span>';
+ '<span class="vsparam"><br/>[universe.hypersomnia.pl status report]</span>';
     ;
     offline_clock_ticker();
 	};
@@ -173,7 +173,7 @@ setInterval(offline_clock_ticker, 500);
 </script>
 
 <div id="serverwidget">
-<iframe seamless="seamless" scrolling="no" frameborder="0" src="http://hypexperientia.ddns.net" style="height: 0px; width:100%;"></iframe>
+<iframe seamless="seamless" scrolling="no" frameborder="0" src="http://universe.hypersomnia.pl" style="height: 0px; width:100%;"></iframe>
 </div>
 <script>$('iframe').iFrameResize();</script>
 <div style="width:100%; height: 15px; border-top: 1px solid rgb(60, 60, 60)"></div>
