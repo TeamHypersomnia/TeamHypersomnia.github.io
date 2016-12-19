@@ -56,6 +56,7 @@ permalink: /summary/
     * <a href="https://www.opengl.org/" class="vsenum">OpenGL</a><br/>
     * <a href="http://kcat.strangesoft.net/openal.html" class="vsenum">OpenAL Soft</a><br/>
     * <a href="https://www.box2d.org/" class="vsenum">Box2D</a> <span class="vscomment">  // physics simulation engine</span><br/>
+    * <a href="https://www.gnu.org/software/libmicrohttpd/" class="vsenum">GNU Libmicrohttpd</a> <span class="vscomment">  // for a simple http widget with server statistics</span><br/>
     * <a href="http://www.rasterbar.com/products/luabind.html" class="vsenum">Lua with Luabind</a><span class="vscomment">  // mostly configuration</span><br/>
     * <a href="http://enet.bespin.org/" class="vsenum">ENet</a><span class="vscomment">  // networking engine </span><br/>
     * <a href="https://github.com/ivanfratric/polypartition" class="vsenum">polypartition</a><span class="vscomment"> // polygon partitioning library </span><br/>
