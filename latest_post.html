@@ -1,0 +1,12 @@
+---
+permalink: /latest_post/
+---
+{% for post in site.posts %}
+[{{ post.date | date: "%d" }}.{{ post.date | date: "%m" }}.{{ post.date | date: "%Y" }}]
+{% if post.small_title %}
+{{ post.small_title }}
+{% else %}
+{{ post.title }}
+{% endif %}
+{% break %}
+{% endfor %}
