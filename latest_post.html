@@ -1,6 +1,7 @@
 ---
 permalink: /latest_post/
 ---
+newsbegin
 {% for post in site.posts %}
 [{{ post.date | date: "%d" }}.{{ post.date | date: "%m" }}.{{ post.date | date: "%Y" }}]
 {% if post.small_title %}
