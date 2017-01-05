@@ -170,18 +170,17 @@ It only differs from the previous shader by that I discard the fragment if the l
 After reactivating the particle systems, I have decided to implement some smokes for esthetics:<br/>
 <br/>
 <img src="{{ site.img2_dir }}30.smoke.png"/><br/>
-<span class="vsparam">(HUD on that old screen is a bit bigger than normal)</span><br/>
+<span class="vsparam">(HUD on that old screen is a bit bigger than normal. Pixel traces, muzzle explosions and the like are back!)</span><br/>
 <br/>
 Notice that the smoke has as little as only two intensity levels, once again to give it a pixely feel.<br/>
-How it's done: I dedicate a separate framebuffer for rendering smoke particles, create a texture out of the end result,<br/>
+How it's done: I dedicate a separate framebuffer for rendering smoke particles.<br/>
+I set <span class="vsmacro">glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE, GL_ONE, GL_ONE)</span> and I render the particles using a standard shader used by all other geometry.<br/>
+Next, I create a texture out of the resultant framebuffer,<br/>
 and finally render that texture as a fullscreen overlay with a dedicated shader that clamps the alpha to an intensity level between 0, 1 and 2.<br/>
 In that regard, it is handled somewhat similarly to light.<br/>
-There is however a little bit more of magic involved. Once intensity of the smoke is calculated, I change its hue to that of the light in that location.<br/>
+There is however a little bit more magic involved. Once intensity of the smoke is calculated, I change its hue to that of the light in that location.<br/>
 I must therefore use the generated lightmap texture to properly illuminate the smokes, too.<br/>
-<br/>
-So, to render the smoke particles to the framebuffer, I use a standard shader used by all other geometry,
-but I once again set <span class="vsmacro">glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE, GL_ONE, GL_ONE)</span> for that stage.<br/>
-The shader for the fullscreen overlay however, looks like this:<br/>
+The shader for the fullscreen looks like this:<br/>
 <br/>
 {% highlight glsl %}
 	#version 330
@@ -273,7 +272,7 @@ I have successfully integrated
 You can already hear some decent sound effects for:<br/>
 shooting, driving, getting hit by a bullet, bullet passing through a held item, bullet hitting an obstacle, character's death and buttons in the main menu.<br/>
 Apart from properly spatializing the sound via <span class="vstype">Head-Related Transfer Function</span>, I've also enabled <span class="vstype">doppler effect</span><br/>
-and added some simple air absorption through <span class="vstype">EFX extensions</span>, proportionally to the distance from the sound source.<br/>
+and added air absorption <span class="vstype">(EFX extension)</span> proportionally to the distance from the sound source.<br/>
 <br/>
 For example, listen to these passing cars:<br/>
 <br/>
@@ -282,7 +281,7 @@ For example, listen to these passing cars:<br/>
 <br/>
 <video id="14.Slowmotion-aimpunch" src="{{ site.img_dir }}32.firefight.webm" controls></video><br/>
 <br/>
-For now I am using some sample sounds from public domain found on <a style="color:white" class="vstext" href="http://freesound.org/"><span class="vsparam">[</span>freesound.org.<span class="vsparam">]</span></a>
+For now I am using some sample sounds in public domain found on <a style="color:white" class="vstext" href="http://freesound.org/"><span class="vsparam">[</span>freesound.org<span class="vsparam">]</span></a>
 <br/> 
 <br/> 
 <div class="separator" id="section6"></div>
@@ -306,12 +305,12 @@ Intro sequence with a firefight, animated gif:<br/><br/>
 <a href="{{ site.img2_dir }}21.universe_founded_by.gif"><img src="{{ site.img2_dir }}21.universe_founded_by.gif"/></a><br/><br/>
 Intro sequence with a passing motorcycle, animated gif:<br/><br/>
 <a href="{{ site.img2_dir }}22.before_climax.gif"><img src="{{ site.img2_dir }}22.before_climax.gif"/></a><br/><br/>
-Intro sequence, climax, animated gif:<br/><br/>
+Intro sequence at climax with unrolling menu, animated gif:<br/><br/>
 <a href="{{ site.img2_dir }}19.menu_entering.gif"><img src="{{ site.img2_dir }}19.menu_entering.gif"/></a><br/><br/>
 Main menu fragment with passing cars, animated gif:<br/><br/>
-<a href="{{ site.img2_dir }}20.passing_cars.gif"><img src="{{ site.img2_dir }}20.passing_cars.gif"/></a><br/><br/>
+<a href="{{ site.img2_dir }}20.passing_cars.gif"><img src="{{ site.img2_dir }}20.passing_cars.gif"/></a><br/>
 <br/>
-You might ask: how was I able to coordinate that many entities having not enough friends for that, <br/>and without any kind of artificial intelligence?<br/>
+You might ask: how was I able to coordinate that many entities not having enough friends for that, <br/>and without any kind of artificial intelligence?<br/>
 The answer - a new launch mode, "DIRECTOR" mode!<br/>
 <br/>
 <img src="{{ site.img2_dir }}32.director.png"/>
