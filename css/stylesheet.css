@@ -116,6 +116,12 @@ a.vsparam:hover {
   border-bottom: 1px dotted rgb(60, 60, 60);
 }
 
+.separator {
+  width:100%; 
+  height: 15px; 
+  border-top: 1px solid rgb(60, 60, 60);
+}
+
 a {
   color: #1e6bb8;
   text-decoration: none; }
