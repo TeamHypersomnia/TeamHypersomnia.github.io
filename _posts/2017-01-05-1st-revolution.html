@@ -31,9 +31,9 @@ There are so many new things that I need to split this article into several sect
 Here is what I did over the course of past three months:<br/>
 <br/>
 <a style="color:white" class="vstext" href="#section1"><span class="vsparam">[</span>Inventory GUI refactored and fully networked<span class="vsparam">]</span></a><br/>
-<a style="color:white" class="vstext" href="#section2"><span class="vsparam">[</span>Reintroduction of pixel-art lighting, this time with neon maps<span class="vsparam">]</span></a><br/>
-<a style="color:white" class="vstext" href="#section3"><span class="vsparam">[</span>Reintroduction of tilesets and their specular highlights<span class="vsparam">]</span></a><br/>
-<a style="color:white" class="vstext" href="#section4"><span class="vsparam">[</span>Reintroduction of pixel-art smoke and reactivation of all particle systems<span class="vsparam">]</span></a><br/>
+<a style="color:white" class="vstext" href="#section2"><span class="vsparam">[</span>Introduction of pixel-art lighting, this time with neon maps<span class="vsparam">]</span></a><br/>
+<a style="color:white" class="vstext" href="#section3"><span class="vsparam">[</span>Introduction of tilesets and their specular highlights<span class="vsparam">]</span></a><br/>
+<a style="color:white" class="vstext" href="#section4"><span class="vsparam">[</span>Introduction of pixel-art smoke and reactivation of all particle systems<span class="vsparam">]</span></a><br/>
 <a style="color:white" class="vstext" href="#section5"><span class="vsparam">[</span>Introduction of audio with OpenAL; integration of HRTF<span class="vsparam">]</span></a><br/>
 <a style="color:white" class="vstext" href="#section6"><span class="vsparam">[</span>Main menu draft with working credits and the intro scene recorded with Director mode<span class="vsparam">]</span></a><br/>
 <a style="color:white" class="vstext" href="#section7"><span class="vsparam">[</span>New content: JMIX114 motorcycle, better truck, KEK9, BILMER2000 <span class="vsparam">]</span></a><br/>
@@ -50,7 +50,7 @@ You can wield a rifle, attach a suppressor and drop it back for your friend to p
 Now I could even implement sharing inventory view between players with little effort.<br/>
 <br/>
 <div class="separator" id="section2"></div>
-<span style="color:white">Reintroduction of pixel-art lighting, this time with neon maps</span><br/>
+<span style="color:white">Introduction of pixel-art lighting, this time with neon maps</span><br/>
 <br/>
 I have introduced lighting system stylized specifically for pixel art:<br/>
 <br/>
@@ -63,7 +63,7 @@ Items themselves can glow in the darkness:<br/>
 <img src="{{ site.img2_dir }}24.light.png"/><br/>
 <br/>
 This is thanks to so called "neon maps".<br/>
-In short, for each sprite that I want to glow, I create a special image called "sprite_name_neon_map.png".<br/>
+For each sprite that I want to emanate light, I create a special image called "sprite_name_neon_map.png".<br/>
 The game detects existence of such a file and associates it with the sprite called "sprite_name".<br/>
 For example, a proper "backpack_neon_map.png" for the above glowing backpack looks like this:<br/>
 <br/>
@@ -82,12 +82,12 @@ To summarize, here's the process of creating the lightmap texture with 4 dynamic
 Firstly, the framebuffer is cleared with <span style="color:white">(0.1f, 0.2f, 0.2f, 1.0f)</span> in order to generate some cool, cyan ambient lighting.<br/>
 Secondly, I render all lights as triangles that represent the unshadowed region.<br/>
 In the last frame of the above animation, I render the neon maps on top of all rendered lights without caring about shadows at all.<br/>
-It's important to do all this with <span class="vsmacro">glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE, GL_ONE, GL_ONE);</span> and thence additively,</br>
-instead of the standard <span class="vsmacro">glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_ONE);</span></span>.<br/>
+It's important to do all this with <span class="vsmacro">glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE, GL_ONE, GL_ONE)</span> and thence additively,</br>
+instead of the standard <span class="vsmacro">glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_ONE)</span></span>.<br/>
 <br/>
-Finally, I use this fragment shader:<br/>
+Finally, in order to render all geometry with proper illumination, I use this fragment shader:<br/>
 <br/>
-{% highlight cpp %}
+{% highlight glsl %}
 	#version 330
 
 	smooth in vec4 theColor;
@@ -122,6 +122,62 @@ Finally, I use this fragment shader:<br/>
 	}
 {% endhighlight %}<br/>
 <br/>
-In order to render all geometry with proper illumination.<br/>
+Notice that I clamp the light's intensity to a small number of levels to achieve their pixely look.<br/>
+I however leave the hue intact, so that the colors themselves transition smoothly.<br/>
 Resulting in this:<br/>
+<br/>
 <img src="{{ site.img2_dir }}28.scene.png"/><br/>
+<br/>
+<div class="separator" id="section3"></div>
+<span style="color:white">Introduction of tilesets and their specular highlights</span><br/>
+<br/>
+You could already see that in the above image: tilesets are back!<br/>
+You can also notice some neat specular blinks on top of the shiny kind of tiles.<br/>
+They are however absent under insufficient luminance:<br/>
+<br/>
+<img src="{{ site.img2_dir }}29.highlights.gif"/><br/>
+<br/>
+That is because I use a specialized version of the above shader to render the specular highlights:<br/>
+<br/>
+{% highlight glsl %}
+	#version 330
+	smooth in vec4 theColor;
+	in vec2 theTexcoord;
+	
+	out vec4 outputColor;
+	
+	uniform sampler2D basic_texture;
+	uniform sampler2D light_texture;
+	
+	const int light_levels = 3;
+	const int light_step = 255/light_levels;
+	
+	void main() 
+	{
+		vec2 texcoord = gl_FragCoord.xy;
+		texcoord.x /= textureSize(light_texture, 0).x; 
+		texcoord.y /= textureSize(light_texture, 0).y;
+	
+		vec4 light = texture(light_texture, texcoord);
+	
+		float intensity = max(max(light.r, light.g), light.b);
+		
+		int level = (int(intensity * 255.0) / light_step + light_levels);
+	
+		if(level < 4)
+			discard;
+	
+		intensity = float(
+			
+			light_step * (level + 3)
+	
+			) / 255.0;
+		light.rgb *= intensity;
+	
+		vec4 pixel = theColor * texture(basic_texture, theTexcoord) * light;
+		outputColor = pixel;
+	}
+{% endhighlight %}<br/>
+<br/>
+It only differs by that I discard the fragment if the light intensity is not enough.
+<br/>
