@@ -1,51 +1,34 @@
 ---
 layout: post
-title:  1st Revolution
+title:  1st Hypersomnian revolution
 date:   2017-01-05 13:50:00 +0200
 comments_identifier: 1strevolution
 excerpt_separator: <!--more-->
 ---
 
 <span class="vsenum">Embrace the new face of Hypersomnia.</span><br/><br/>
-These images will be loading for quite a while, especially the GIFs, but it's well worth it.<br/>
-<span class="vstype">Make sure to view these screenshots in full 1:1 resolution, just click on them to do so.</span><br/>
-<br/>
-Full menu screen with passing cars:<br/><br/>
+<span style="color:white">THERE IS NO TL;DR VERSION! You have been warned.</span><br/><br/>
 <a href="{{ site.img2_dir }}16.main_menu.png"><img src="{{ site.img2_dir }}16.main_menu.png"/></a><br/><br/>
-Full menu screen with passing soldiers:<br/><br/>
-<a href="{{ site.img2_dir }}17.main_menu.png"><img src="{{ site.img2_dir }}17.main_menu.png"/></a><br/><br/>
-<!--more-->
-Full menu screen with credits:<br/><br/>
-<a href="{{ site.img2_dir }}18.main_menu_credits.png"><img src="{{ site.img2_dir }}18.main_menu_credits.png"/></a><br/><br/>
-
-Intro sequence with a firefight, animated gif:<br/><br/>
-<a href="{{ site.img2_dir }}21.universe_founded_by.gif"><img src="{{ site.img2_dir }}21.universe_founded_by.gif"/></a><br/><br/>
-Intro sequence with a passing motorcycle, animated gif:<br/><br/>
-<a href="{{ site.img2_dir }}22.before_climax.gif"><img src="{{ site.img2_dir }}22.before_climax.gif"/></a><br/><br/>
-Intro sequence, climax, animated gif:<br/><br/>
-<a href="{{ site.img2_dir }}19.menu_entering.gif"><img src="{{ site.img2_dir }}19.menu_entering.gif"/></a><br/><br/>
-Main menu fragment with passing cars, animated gif:<br/><br/>
-<a href="{{ site.img2_dir }}20.passing_cars.gif"><img src="{{ site.img2_dir }}20.passing_cars.gif"/></a><br/><br/>
-<br/>
 There are so many new things that I need to split this article into several sections.<br/>
-Here is what I did over the course of past three months:<br/>
+Here is what I did over the course of these three silent months:<br/>
 <br/>
 <a style="color:white" class="vstext" href="#section1"><span class="vsparam">[</span>Inventory GUI refactored and fully networked<span class="vsparam">]</span></a><br/>
 <a style="color:white" class="vstext" href="#section2"><span class="vsparam">[</span>Introduction of pixel-art lighting, this time with neon maps<span class="vsparam">]</span></a><br/>
 <a style="color:white" class="vstext" href="#section3"><span class="vsparam">[</span>Introduction of tilesets and their specular highlights<span class="vsparam">]</span></a><br/>
 <a style="color:white" class="vstext" href="#section4"><span class="vsparam">[</span>Introduction of pixel-art smoke and reactivation of all particle systems<span class="vsparam">]</span></a><br/>
-<a style="color:white" class="vstext" href="#section5"><span class="vsparam">[</span>Introduction of audio with OpenAL; integration of HRTF<span class="vsparam">]</span></a><br/>
-<a style="color:white" class="vstext" href="#section6"><span class="vsparam">[</span>Main menu draft with working credits and the intro scene recorded with Director mode<span class="vsparam">]</span></a><br/>
-<a style="color:white" class="vstext" href="#section7"><span class="vsparam">[</span>New content: JMIX114 motorcycle, better truck, KEK9, BILMER2000 <span class="vsparam">]</span></a><br/>
+<a style="color:white" class="vstext" href="#section5"><span class="vsparam">[</span>Introduction of audio with OpenAL Soft; integration of HRTF<span class="vsparam">]</span></a><br/>
+<a style="color:white" class="vstext" href="#section6"><span class="vsparam">[</span>Main menu draft with working credits and an intro scene recorded with Director mode<span class="vsparam">]</span></a><br/>
+<a style="color:white" class="vstext" href="#section7"><span class="vsparam">[</span>New content: JMIX114 motorcycle, better truck, KEK9, BILMER2000<span class="vsparam">]</span></a><br/>
 <a style="color:white" class="vstext" href="#section8"><span class="vsparam">[</span>Experimental test server widget on Hypersomnia homepage showing online players<span class="vsparam">]</span></a><br/>
 <a style="color:white" class="vstext" href="#section9"><span class="vsparam">[</span>Fixed build problems and can now build Hypersomnia with just one click<span class="vsparam">]</span></a><br/>
 <br/>
+<!--more-->
 <div class="separator" id="section1"></div>
 <span style="color:white">Inventory GUI refactored and fully networked</span><br/>
 <br/>
 The inventory GUI has undergone an architectural revolution and is now a part of the networked simulation.<br/>
 Thanks to template metaprogramming magic, item and slot buttons are completely devoid of pointers.<br/>
-Each part of the gmae GUI gets transferred over the network as a piece of linear memory.<br/>
+Each part of the game GUI gets transferred over the network as a piece of linear memory.<br/>
 You can wield a rifle, attach a suppressor and drop it back for your friend to pick up.<br/>
 Now I could even implement sharing inventory view between players with little effort.<br/>
 <br/>
@@ -278,3 +261,81 @@ The shader for the fullscreen overlay however, looks like this:<br/>
 		outputColor = smoke;
 	}
 {% endhighlight %}<br/>
+
+<div class="separator" id="section5"></div>
+<span style="color:white">Introduction of audio with OpenAL Soft; integration of HRTF</span><br/>
+<br/>
+<img src="https://upload.wikimedia.org/wikipedia/en/thumb/2/28/OpenAL_logo.png/200px-OpenAL_logo.png"/>
+<br/>
+<br/>
+I have successfully integrated 
+<a style="color:white" class="vstext" href="http://kcat.strangesoft.net/openal.html"><span class="vsparam">[</span>OpenAL Soft<span class="vsparam">]</span></a> source code into my project.<br/>
+You can already hear some decent sound effects for:<br/>
+shooting, driving, getting hit by a bullet, bullet passing through a held item, bullet hitting an obstacle, character's death and buttons in the main menu.<br/>
+Apart from properly spatializing the sound via <span class="vstype">Head-Related Transfer Function</span>, I've also enabled <span class="vstype">doppler effect</span><br/>
+and added some simple air absorption through <span class="vstype">EFX extensions</span>, proportionally to the distance from the sound source.<br/>
+<br/>
+For example, listen to these passing cars:<br/>
+<br/>
+<video id="14.Slowmotion-aimpunch" src="{{ site.img_dir }}31.passing_cars.webm" controls></video><br/>
+<br/>Or such a firefight:<br/>
+<br/>
+<video id="14.Slowmotion-aimpunch" src="{{ site.img_dir }}32.firefight.webm" controls></video><br/>
+<br/>
+For now I am using some sample sounds from public domain found on <a style="color:white" class="vstext" href="http://freesound.org/"><span class="vsparam">[</span>freesound.org.<span class="vsparam">]</span></a>
+<br/> 
+<br/> 
+<div class="separator" id="section6"></div>
+<span style="color:white">Main menu draft with working credits and an intro scene recorded with Director mode</span>
+<br/>
+<br/> 
+So you've already seen the main menu screen, but let's see more of it.<br/>
+These images will be loading for quite a while, especially the animated GIFs, but they are well worth the wait.<br/>
+<span class="vstype">Make sure to view these screenshots in full 1:1 resolution, just click on them to do so.</span><br/>
+<br/>
+Full menu screen with passing soldiers:<br/><br/>
+<a href="{{ site.img2_dir }}17.main_menu.png"><img src="{{ site.img2_dir }}17.main_menu.png"/></a><br/><br/>
+<span style="color:white">The game downloads the latest news article from this website and prints out its title in a scrolling rolling bar at the top.</span><br/>
+I think it is a positive change, for me it enlives the menu and the game overall.<br/>
+<br/>
+Full menu screen with credits:<br/><br/>
+<a href="{{ site.img2_dir }}18.main_menu_credits.png"><img src="{{ site.img2_dir }}18.main_menu_credits.png"/></a><br/><br/>
+You can be there too! That is, if you contribute to our <a class="vsenum" style="color:white" href="https://github.com/TeamHypersomnia/Hypersomnia"><span class="vsparam">[</span>repository under AGPL-3.0<span class="vsparam">]</span></a>.<br/>
+<br/>
+Intro sequence with a firefight, animated gif:<br/><br/>
+<a href="{{ site.img2_dir }}21.universe_founded_by.gif"><img src="{{ site.img2_dir }}21.universe_founded_by.gif"/></a><br/><br/>
+Intro sequence with a passing motorcycle, animated gif:<br/><br/>
+<a href="{{ site.img2_dir }}22.before_climax.gif"><img src="{{ site.img2_dir }}22.before_climax.gif"/></a><br/><br/>
+Intro sequence, climax, animated gif:<br/><br/>
+<a href="{{ site.img2_dir }}19.menu_entering.gif"><img src="{{ site.img2_dir }}19.menu_entering.gif"/></a><br/><br/>
+Main menu fragment with passing cars, animated gif:<br/><br/>
+<a href="{{ site.img2_dir }}20.passing_cars.gif"><img src="{{ site.img2_dir }}20.passing_cars.gif"/></a><br/><br/>
+<br/>
+
+<div class="separator" id="section7"></div>
+<span style="color:white">New content: JMIX114 motorcycle, better truck, KEK9, BILMER2000</span><br/>
+<br/>
+My internet friend has drawn me several new game objects:<br/><br/>
+<img src="{{ site.img2_dir }}truck_inside.png"/>
+<img src="{{ site.img2_dir }}jmix114.png"/>
+<img src="{{ site.img2_dir }}bilmer2000.png"/>
+<img src="{{ site.img2_dir }}kek9.png"/><br/>
+<br/>
+You have already seen them all in action in the above pictures, animations and webms.<br/>
+From left to right: better military truck inside, JMIX114 heavily armored motorcycle, BILMER2000 assault rifle and a KEK9 pistol.<br/>
+<br/>
+<div class="separator" id="section8"></div>
+<span style="color:white">Experimental test server widget on Hypersomnia homepage showing online players</span><br/>
+<br/>
+I have implemented a live widget on my blog to track the status of the official Hypersomnia server.<br/>
+For the moment the "server" just runs from my computer like this:<br/>
+<br/>
+<img src="{{ site.img2_dir }}2017-01-05_20-56-51.gif"/><br/>
+<br/>
+The widget also tells you when was the last time I launched the server.<br/>
+Ultimately I will buy VPS in not so distant future, but obviously, when I am online like that and testing the server,<br/>
+you are free to join with your client and meet me in my experimental universe.<br/>
+You just need to paste 
+<span style="color:white">universe.hypersomnia.pl</span> into your config.lua file as the connect address,<br/>
+which always points to the my personal computer (and my only and beloved workstation, at that).<br/>
+<br/>
