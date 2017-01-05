@@ -14,6 +14,7 @@ url: "http://hypersomnia.pl" # the base hostname & protocol for your site
 twitter_username: jekyllrb
 github_username:  geneotech
 img_dir: "http://hypersomnia.pl/pics/"
+img2_dir: "http://gifyu.com/images/"
 ts3_link: "ts3server://ts3.hypersomnia.pl?nickname=BlogVisitor&cid=254&channelpassword=defaultChannelPassword&addbookmark=HypersomniaCongressCenter"
 
 # Build settings
