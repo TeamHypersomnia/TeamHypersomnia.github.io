@@ -1,0 +1,62 @@
+---
+layout: post
+title:  "GUI progress: hotbar and laser sights"
+date:   2017-01-17 12:14:00 +0200
+comments_identifier: guiprogresshotbarandlasersights
+excerpt_separator: <!--more-->
+---
+
+I have coded some brand-new elements of <span class="vstype">GUI</span>.<br/>
+You can now accurately inspect trajectory of your projectile with this nicely glowing <span class="vstype">laser</span>:<br/>
+<br/>
+<img src="{{ site.img2_dir }}34.laser.png"/>
+<!--more-->
+<br/>
+<br/>
+The laser changes its appearance with regard to hostility of the targeted party.<br/>
+<br/>
+It can turn green when pointing at an ally:<br/>
+<br/>
+<img src="{{ site.img2_dir }}35.laser_friendly.gif"/>
+<br/>
+<br/>
+Or it can turn red when pointing at a foe:
+<br/>
+<br/>
+<img src="{{ site.img2_dir }}36.laser_enemy.gif"/>
+<br/>
+<br/>
+The laser also appears as a dashed line beyond the first physical obstacle.
+<br/>
+<br/>
+<div class="separator"></div>
+Furthermore, I have programmed a <span class="vstype">Deus Ex</span>-inspired hotbar used to quickly draw weapons and other items.<br/>
+Whilst picking up items, hotbar will automatically populate with shortcuts. Currently wielded items are highlighted with full border.<br/>
+<br/>
+<img src="{{ site.img2_dir }}37.hotbar_picking_up.gif"/>
+<br/>
+<br/>
+I can press <span class="vsenum">Q</span> to quickly draw the previously wielded weapon.<br/>
+Dual wields are also possible. Just press two buttons without releasing either and you have a dual wield:<br/>
+<br/>
+<img src="{{ site.img2_dir }}38.hotbar_dual_wields.gif"/>
+<br/>
+<br/>
+If a dual wielding setup is selected after another dual wielding setup, <br/><span class="vsenum">Q</span> will correctly switch between dual wields, instead
+of just single weapons.<br/>
+When dual wielding, the hotbar button whose assigned item resides in the secondary hand will have a paler color (it's configurable).<br/>
+<br/>
+Drag and dropping is also fully functional within the hotbar, one can easily assign entities, reassign them and clear assignments:<br/>
+<br/>
+<img src="{{ site.img2_dir }}39_hotbar_assignments.gif"/>
+<br/>
+<br/>
+Hints describing the imminent action are provided 
+- <span class="vsstring">Assign</span>, 
+<span class="vsstring">Reassign</span>, 
+<span class="vsstring">Clear assignment</span>.
+<br/><br/>
+<div class="separator"></div>
+That's it about recent progress.<br/>
+<br/>
+I will be now working on a little something that will work as mana, in my universe properly called <span class="vstype">Personal Electricity</span>, and then code some test damage and healing spells.<br/>
