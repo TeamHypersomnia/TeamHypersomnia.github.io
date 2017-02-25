@@ -1,0 +1,105 @@
+---
+layout: post
+title:  "Explosions, working spells, better shooting experience, better damage effects"
+date:   2017-01-17 12:14:00 +0200
+comments_identifier: guiprogresshotbarandlasersights
+excerpt_separator: <!--more-->
+---
+Hypersomnia gets even more action!<br/>
+<br/>
+<img src="{{ site.img2_dir }}40.uwota.gif"/>
+<br/>
+<br/>
+Let me now introduce the new features chronologically.<br/>
+<!--more--><br/>
+<span class="vstype">Sentience bars</span>, the new HUD elements, will always notify you of the value of your <br/><span style="color:red">Health points</span>, <span class="vskeyword">Personal Electricity points</span> and <span style="color:orange">Consciousness points</span>.<br/>
+If you have any temporary perks enabled, bars will appear telling you the time remaining.<br/>
+<br/>
+<img src="{{ site.img2_dir }}41.sentience_bars.gif"/><br/>
+<br/>
+For now, the purpose of <span style="color:orange">Consciousness points</span> is to limit the maximum sprint duration.<br/>
+For <span style="color:orange">Consciousness</span> to regenerate, you have to stay still for a while - it remains frozen if you keep walking.<br/>
+This is to force people to just walk when a long distance is to be travelled, instead of running all the time.<br/>
+I will also make it so that when <span style="color:orange">Consciousness</span> drops to <span class="vsnumber">0</span>, <br/>a character is knocked unconscious without the standard loss of experience.<br/>
+<br/>
+<span class="vskeyword">Personal Electricity</span> serves the exact same purpose that "mana points" serve in most of the video games.<br/>
+In the universe, it is described as the amount of matter programmable by mind, that one has still in disposition.<br/>
+It is the fuel requisite to cast spells, which brings us to the next feature:<br/>
+<br/>
+<img src="{{ site.img2_dir }}42.action_bar.gif"/><br/>
+<br/>
+Hypersomnia gets yet another GUI element, this time an <span class="vstype">action bar</span>.<br/>
+Above the hotbar, you will be able to assign hotkeys to spells and maybe some other actions in the future.<br/>
+Spells for which there is not enough <span class="vskeyword">Personal Electricity</span> appear desaturated.<br/>
+There is also a black clock overlay on the spells for which the cooldown still lasts.<br/>
+Spells will have incantations, meaning it will even be possible to cast them from the chat;<br/>
+I made the phrases for these incantations by combining some random words from Greek, without particular reason.<br/> 
+<br/>
+Upon successful casting, colorful sparkles appear along with a proper sound effecct.<br/>
+If however either the cooldown or insufficient PE prevents you from casting,<br/>
+a gray smoke appears for a fraction of a second, with a distinct sound effect, too.<br/>
+<br/>
+As of currently, there are exactly <span class="vsnumber">5</span> fully functional spells:<br/>
+<br/>
+<span style="color:green">Haste</span> lets you move faster.<br/> 
+<br/>
+<span style="color:cyan">Fury of the Aeons (FOTA)</span> deals massive damage in the vicinity of the caster:<br/>
+<br/>
+<img src="{{ site.img2_dir }}43.fota.gif"/><br/>
+<br/>
+Technically speaking, it spawns a forceful explosion (ignoring the caster) which also respects the visibility.<br/>
+<br/>
+<span style="color:cyan">Ultimate Wrath of the Aeons (UWOTA)</span> is a stronger version of <span class="vstype">FOTA;</span><br/>
+it spawns three huge explosions in a quick succession, with the cost of a slight delay and drastically more PE required:<br/>
+<br/>
+<img src="{{ site.img2_dir }}44.uwota_slowmo.gif"/><br/>
+<br/>
+Notice how the explosion respects the wall and the truck.<br/>
+Smokes and flashy particles are spawned along the areas within the reach of the impact,<br/>
+or simply in a perfect ring if there are no obstructions at all.<br/>
+The center of the explosion is also slightly illuminated.<br/>
+Affected characters, this time including the caster, get a massive aimpunch. It makes you feel the impact better.<br/>
+<br/>
+<span style="color:cyan">Electric Triad</span> spawns three electric balls towards three closest hostiles:<br/>
+<br/>
+<img src="{{ site.img2_dir }}45.electric_triad.gif"/><br/>
+<br/>
+(slowmo at the beginning)
+<br/>
+<br/>
+<span style="color:turquoise">Electric Shield</span> protects you from damage in a way that drains Personal Electricity instead of Health.<br/>
+It also prevents aimpunch.</br>
+<br/>
+<img src="{{ site.img2_dir }}46.electric_shield.gif"/><br/>
+<br/>
+Speaking of, notice the new damage effects!<br/>
+When you die, a massive force is applied to both your character and his items, to improve game's dynamics.</br>
+An exploding ring can be noticed wherever the bullet hits,<br/>
+and in the case of health damage, there are also red smokes, flashy, animated particles and <span style="color:white">thunders</span> (which also spawn particles upon their exit).</br>
+<span style="color:white">Thunders</span> will collide with almost everything, including items:</br>
+</br>
+<img src="{{ site.img2_dir }}47.thunders.gif"/><br/>
+<br/>
+They deal no damage, though. It's just an aesthetic detail.</span><br/>
+<br/>
+New item is introduced - <span class="vstype">Amplifier arm</span>:</br>
+</br>
+<img src="{{ site.img2_dir }}48.amplifier_arm.png"/><br/>
+<br/>
+It shoots homing energy balls draining slight amount of PE with each shot:<br/>
+<br/>
+<img src="{{ site.img2_dir }}49.homing_energyballs.gif"/><br/>
+<br/>
+There are also improvements to the shooting experience.</br>
+Muzzle smoke has been added. Bullets also leave their own smokes with their respective colors.</br>
+Low ammo sound cue has been added.</br>
+Also, when shooting really intensely, a firearm engine can be heard cooling off.</br>
+<br/>
+<span class="vstype">Collision sounds</span> have been added for items colliding with each other.</br>
+Material types are respected, meaning that there will be a different sound if a metallic item collides with wood,<br/>
+and a different one if both colliders are metallic.<br/>
+<br/>
+Watch the following video to see all of the above features, including the sound effects:<br/>
+<br/>
+<iframe width="420" height="315" src="https://youtu.be/XsSKj6hJH0w">
+</iframe> 
