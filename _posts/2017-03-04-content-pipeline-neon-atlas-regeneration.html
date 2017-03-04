@@ -1,0 +1,52 @@
+---
+layout: post
+title:  "Content pipeline: automatically regenerating neons, gui textures and atlases"
+date:   2017-03-04 12:14:00 +0200
+comments_identifier: guiprogresshotbarandlasersights
+excerpt_separator: <!--more-->
+---
+<img src="{{ site.img2_dir }}50.neon_maps.png"/><br/>
+
+The game will now perform a very busy first launch, wherein it will procedurally regenerate:<br/>
+<div style="margin-left:3em"><br/>
+- <span class="vstype">buttons with corners</span> used for hotbar and menu buttons<br/>
+- <span class="vstype">desaturations</span> requested for some textures<br/>
+- all <span class="vstype">neon maps</span> - I won't have to blur all the images by hand anymore - the game will do it on its own!<br/>  
+- detailed <span class="vstype">polygonizations</span> of images needed for better accuracy of physical shapes<br/>
+- <span class="vstype">HUD circles</span> like health bars<br/>
+- <span class="vstype">fonts</span> from .ttf files<br/>
+- <span class="vstype">atlases</span> for all of the above.<br/> Like this:<br/>
+<br/>
+<img src="{{ site.img2_dir }}53.game_atlas.png"/><br/>
+<br/>
+The console log then looks like this:<br/>
+<br/>
+<img src="{{ site.img2_dir }}51.content_regeneration.png"/><br/>
+<br/>
+</div>
+<!--more-->
+It's almost as if my game became more lively in a single moment!<br/>
+This only happens once though as on every subsequent launch, the game has all the baked atlases and other resources ready to be loaded straight away.<br/>
+The regenerators also output <span class="vsenum">.stamp</span> files which contain copy of the inputs gathered from configs</br>
+along with the last write time of the source image, should one exist:<br/>
+<br/>
+<img src="{{ site.img2_dir }}55.regenerators.png"/><br/>
+</br>
+This way, the regenerators know exactly which resources are to be created again due to a change in config or in a source image.<br/>
+</br>
+Needless to say, all of this drastically reduces the time needed to launch the application,<br/>
+by my measurements at least by <span class="vsnumber">150 </span>ms - which is quite a number considering<br/>
+that it was already starting up in a fraction of a second.<br/>
+
+My game was also accepted to the very front page of the <a style="color:white" href="http://www.gamedev.pl/"><span class="vsparam">[</span>gamedev.pl<span class="vsparam">]</span></a>,<br/>
+where I've posted a description of the game, this time in Polish.<br/>
+Click on the banner:<br/>
+</br>
+<a href="https://forum.gamedev.pl/t/hypersomnia-multiplayer-top-down-shooter-z-otwartym-zrodlem/2518">
+<img src="{{ site.img2_dir }}52.banner.png"/><br/>
+</a><br/>
+I will be now working on grenades:<br/>
+<br/>
+<img src="{{ site.img2_dir }}54.prototype_grenades.png"/><br/>
+<br/>
+See you soon!
