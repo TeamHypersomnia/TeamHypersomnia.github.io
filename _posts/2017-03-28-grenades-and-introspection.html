@@ -154,7 +154,7 @@ namespace components {
 {% endhighlight %}
 <br/>
 Here it becomes obvious that to reach all child_entity_ids that components::car may possibly possess,<br/>
-it is necessary to introspect once again the members left_engine and right_engine,<br/>
+it is necessary to introspect deeper into the members left_engine and right_engine,<br/>
 and not just omit these members because their types are not equal to child_entity_id.<br/>
 <br/>
 In the presented case, the function recurses always with the exception of when it encounters <span class="vstype">shape_variant</span> (which is a type-safe union),<br/>
