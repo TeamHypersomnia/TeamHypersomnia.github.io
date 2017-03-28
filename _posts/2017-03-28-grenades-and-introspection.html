@@ -1,0 +1,169 @@
+---
+layout: post
+title:  "Grenades and my approach to C++ introspection"
+date:   2017-03-28 12:14:00 +0200
+comments_identifier: grenadesandintrospection
+excerpt_separator: <!--more-->
+---
+Watch the new gameplay features here:<br/>
+<br/>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/f0cHnds9UuU" frameborder="0" allowfullscreen></iframe>
+</iframe><br/>
+<br/>
+What follows is a purely a technical talk, so if you are not a programmer,<br/>
+you can safely skip the rest of this post in its entirety.<br/>
+<br/>
+So I fancied introspection support for my C++ types.<br/>
+No easy feat, if you ask me, considering that it requires a whole lot of <span class="vstype">template metaprogramming magic</span>.<br/>
+<br/>
+I've chosen the approach where it is enough to leave short comments in the structures that I need to introspect,<br/>
+and then an external utility should find these comments and <span class="vsenum">automatically generate introspector functions from the structure code</span>.<br/>
+So, given this:<br/>
+<!--more-->
+<br/>
+{% highlight cpp %}
+template <class id_type>
+struct basic_inventory_slot_id {
+	// GEN INTROSPECTOR struct basic_inventory_slot_id class id_type
+	slot_function type;
+	id_type container_entity;
+	// END GEN INTROSPECTOR
+
+	basic_inventory_slot_id();
+	basic_inventory_slot_id(const slot_function, const id_type);
+
+	void unset();
+
+	bool operator==(const basic_inventory_slot_id b) const;
+	bool operator!=(const basic_inventory_slot_id b) const;
+};
+{% endhighlight %}
+<br/>
+I should have this:<br/>
+<br/>
+{% highlight cpp %}
+template <class F, class id_type, class... Instances>
+void introspect_body(
+	const basic_inventory_slot_id<id_type>* const,
+	F f,
+	Instances&&... _t_
+) {
+	FIELD(type);
+	FIELD(container_entity);
+}
+{% endhighlight %}
+<br/>
+Where "FIELD" is a macro that resolves to a name-value pair:<br/>
+<br/>
+{% highlight cpp %}
+#define FIELD(x) f(#x, _t_.x...)
+{% endhighlight %}
+<br/>
+Needless to say, I had to implement such a utility and here it is:<br/>
+<br/>
+<a style="color:white" href="https://github.com/TeamHypersomnia/Introspector-generator"><span class="vsparam">[</span>https://github.com/TeamHypersomnia/Introspector-generator<span class="vsparam">]</span></a><br/>
+<br/>
+It's under <span class="vstype">MIT license</span>, and therefore free to use for everyone.<br/>
+<br/>
+Now let us consider a simple usecase for that, apart from the obvious one which is text-based serialization.<br/>
+<br/>
+I need to clone an entity.<br/>
+It is only natural to, apart from the source entity itself, clone all children entities that the source entity has,<br/>
+so that the cloned instance has its own identical children.<br/>
+But what if the ids for these children entities are scattered across components?<br/>
+For example, it makes sense to put child_entity_id engine_sound inside components::car,<br/>
+and child_entity_id muzzle_smoke inside components::gun.<br/>
+Do I manually access those fields and update the cloning logic whenever I decide to add a new child_entity_id to a component?<br/>
+<br/>
+Not at all!<br/>
+<br/>
+Thanks to the introspection magic, I can replace code like this:<br/>
+<br/>
+{% highlight cpp %}
+// some kind of cosmos::clone_entity function
+cloned_to_component.some_child_car_engine = cosmos.clone_entity(cloned_from_component.some_child_car_engine);
+cloned_to_component.some_child_muzzle_smoke = cosmos.clone_entity(cloned_from_component.some_child_muzzle_smoke);
+cloned_to_component.some_other_child = cosmos.clone_entity(cloned_from_component.some_other_child);
+{% endhighlight %}
+<br/>
+With a generalized code like this:<br/>
+<br/>
+{% highlight cpp %}
+augs::introspect_recursive<
+	concat_unary_t<
+		std::conjunction,
+		bind_types_t<std::is_same, child_entity_id>,
+		bind_types_t<std::is_same, const child_entity_id>
+	>,
+	concat_unary_t<
+		std::conjunction,
+		bind_types_t<apply_negation_t<std::is_same>, shape_variant>,
+		bind_types_t<apply_negation_t<std::is_same>, const shape_variant>
+	>,
+	stop_recursion_if_valid
+> (
+	[&](auto, auto& cloned_into_id, const auto& cloned_from_id) {
+		cloned_into_id = cosmos.clone_entity(cloned_from_id);
+	},
+	cloned_to_component,
+	cloned_from_component
+);
+{% endhighlight %}
+<br/>
+<br/>
+augs::introspect_recursive is a function that takes two template predicates as template arguments,<br/>
+a generic lambda as an argument, and later a variadic number of instances upon which the introspection is to be performed.<br/>
+The generic lambda must accept the name (<span class="vstype">std::string</span>) of the field in its first argument (here, it is simply discarded),<br/>
+and later references to the introspected members.<br/>
+<br/>
+The first template predicate determines under what condition should the generic lambda be called.<br/>
+Here, it is a conjunction of two conditions:<br/>
+<br/>
+1. The first type must be equal to child_entity_id.<br/>
+2. The second type must be equal to const child_entity_id (notice that the cloned_from_component is const, as modification is not needed).<br/>
+<br/>
+<span class="vstype">apply_negation_t</span>, <span class="vstype">bind_types_t</span> and <span class="vstype">concat_unary_t</span> are my magic spells that modify the behaviour of template predicates like <span class="vstype">std::is_same</span>.<br/>
+For example, {% highlight cpp %}bind_types_t<std::is_same, const int>{% endhighlight %} yields a template that is a function of one argument, so this:<br/>
+{% highlight cpp %}
+static_assert(bind_types<std::is_same, const int>::type<const int>::value, "Trait is wrong");
+{% endhighlight %}
+Holds.<br/> 
+<br/>
+The second template predicate determines under what condition should the <span class="vstype">recursion</span> proceed.
+Recursion of the introspection is necessary because a component may have such a structure:<br/>
+<br/>
+{% highlight cpp %}
+struct car_engine_entities {
+	// GEN INTROSPECTOR struct car_engine_entities
+	child_entity_id physical;
+	child_entity_id particles;
+	// END GEN INTROSPECTOR
+};
+
+namespace components {
+	struct car {
+		// GEN INTROSPECTOR struct components::car
+		// ...
+
+		car_engine_entities left_engine;
+		car_engine_entities right_engine;
+		// ...
+		// END GEN INTROSPECTOR
+	}
+}
+{% endhighlight %}
+<br/>
+Here it becomes obvious that to reach all child_entity_ids that components::car may possibly possess,<br/>
+it is necessary to introspect once again the members left_engine and right_engine,<br/>
+and not just omit these members because their types are not equal to child_entity_id.<br/>
+<br/>
+In the presented case, the function recurses always with the exception of when it encounters <span class="vstype">shape_variant</span> (which is a type-safe union),<br/>
+which is not quite possible to introspect.<br/>
+<br/>
+The function will also call an appropriate <span class="vstype">static_assert</span> if the predicate determines that recursion is needed, but there is no introspector function available<br/> 
+(because I've forgot to put <span class="vscomment">// GEN INTROSPECTOR</span> and <span class="vscomment">END GEN INTROSPECTOR</span> comments, for example).<br/>
+<br/>
+So now if I want to add some more child_entity_ids to whichever components,<br/>
+I just make sure that I give them <span class="vstype">child_entity_id</span> type instead of the plain <span class="vstype">entity_id</span> (which are otherwise identical in function),<br/> 
+launch the <span class="vsenum">Introspector-generator</span>, and the requisite code is generated for me, in an exact and failproof manner.<br/>
+<br/>
