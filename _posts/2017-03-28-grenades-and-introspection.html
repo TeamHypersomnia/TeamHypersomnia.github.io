@@ -89,48 +89,39 @@ cloned_to_component.some_other_child = cosmos.clone_entity(cloned_from_component
 With a generalized code like this:<br/>
 <br/>
 {% highlight cpp %}
-augs::introspect_recursive<
-	concat_unary_t<
-		std::conjunction,
-		bind_types_t<std::is_same, child_entity_id>,
-		bind_types_t<std::is_same, const child_entity_id>
-	>,
-	concat_unary_t<
-		std::conjunction,
-		bind_types_t<apply_negation_t<std::is_same>, shape_variant>,
-		bind_types_t<apply_negation_t<std::is_same>, const shape_variant>
-	>,
-	stop_recursion_if_valid
-> (
-	[&](auto, auto& cloned_into_id, const auto& cloned_from_id) {
-		cloned_into_id = cosmos.clone_entity(cloned_from_id);
-	},
-	cloned_to_component,
-	cloned_from_component
-);
+	augs::introspect(
+		augs::recursive([&](auto&& self, auto, auto& into, const auto& from) {
+			if constexpr(std::is_same_v<decltype(into), child_entity_id&>) {
+				into = cosm.clone_entity(from);
+			}
+			else {
+				augs::introspect_if_not_leaf(augs::recursive(self), into, from);
+			}
+		}),
+		cloned_to_component,
+		cloned_from_component
+	);
 {% endhighlight %}
 <br/>
 <br/>
-augs::introspect_recursive is a function that takes two template predicates as template arguments,<br/>
-a generic lambda as an argument, and later a variadic number of instances upon which the introspection is to be performed.<br/>
-The generic lambda must accept the name (<span class="vstype">std::string</span>) of the field in its first argument (here, it is simply discarded),<br/>
-and later references to the introspected members.<br/>
+augs::introspect takes a generic lambda as an argument, and later a variadic number of instances upon which the introspection is to be performed.<br/>
+augs::introspect_if_not_leaf does the same, but only if the introspected type is not an enum or an arithmetic type.<br/>
 <br/>
-The first template predicate determines under what condition should the generic lambda be called.<br/>
-Here, it is a conjunction of two conditions:<br/>
-<br/>
-1. The first type must be equal to child_entity_id.<br/>
-2. The second type must be equal to const child_entity_id (notice that the cloned_from_component is const, as modification is not needed).<br/>
-<br/>
-<span class="vstype">apply_negation_t</span>, <span class="vstype">bind_types_t</span> and <span class="vstype">concat_unary_t</span> are my magic spells that modify the behaviour of template predicates like <span class="vstype">std::is_same</span>.<br/>
-For example, {% highlight cpp %}bind_types_t<std::is_same, const int>{% endhighlight %} yields a template that is a function of one argument, so this:<br/>
+The generic lambda must accept the name (<span class="vstype">std::string</span>) of the field in its first argument (here, it is simply discarded).<br/>
+Since there's no way to otherwise call a generic lambda inside itself, we need a trick like augs::recursive:<br/>
 {% highlight cpp %}
-static_assert(bind_types<std::is_same, const int>::type<const int>::value, "Trait is wrong");
+	template <class F>
+	auto recursive(F&& callback) {
+		return [&](auto&&... args) { 
+			callback(
+				std::forward<F>(callback), 
+				std::forward<decltype(args)>(args)...
+			);
+		};
+	}
 {% endhighlight %}
-Holds.<br/> 
 <br/>
-The second template predicate determines under what condition should the <span class="vstype">recursion</span> proceed.
-Recursion of the introspection is necessary because a component may have such a structure:<br/>
+Recursion inside the introspection callback is necessary because a component may have such a structure:<br/>
 <br/>
 {% highlight cpp %}
 struct car_engine_entities {
@@ -157,17 +148,10 @@ Here it becomes obvious that to reach all child_entity_ids that components::car 
 it is necessary to introspect deeper into the members left_engine and right_engine,<br/>
 and not just omit these members because their types are not equal to child_entity_id.<br/>
 <br/>
-In the presented case, the function recurses always with the exception of when it encounters <span class="vstype">shape_variant</span> (which is a type-safe union),<br/>
-which is not quite possible to introspect.<br/>
-<br/>
-The function will also call an appropriate <span class="vstype">static_assert</span> if the predicate determines that recursion is needed, but there is no introspector function available<br/> 
-(because I've forgot to put <span class="vscomment">// GEN INTROSPECTOR</span> and <span class="vscomment">END GEN INTROSPECTOR</span> comments, for example).<br/>
-<br/>
 So now if I want to add some more child_entity_ids to whichever components,<br/>
 I just make sure that I give them <span class="vstype">child_entity_id</span> type instead of the plain <span class="vstype">entity_id</span> (which are otherwise identical in function),<br/> 
 launch the <span class="vsenum">Introspector-generator</span>, and the requisite code is generated for me, in an exact and failproof manner.<br/>
 <br/>
 Relevant source files:<br/>
-<a style="color:white" href="https://github.com/TeamHypersomnia/Hypersomnia/blob/master/augs/misc/introspect.h"><span class="vsparam">[</span>https://github.com/TeamHypersomnia/Hypersomnia/blob/master/augs/misc/introspect.h<span class="vsparam">]</span></a><br/>
-<a style="color:white" href="https://github.com/TeamHypersomnia/Hypersomnia/blob/master/augs/templates/predicate_templates.h"><span class="vsparam">[</span>https://github.com/TeamHypersomnia/Hypersomnia/blob/master/augs/templates/predicate_templates.h<span class="vsparam">]</span></a><br/>
-<a style="color:white" href="https://github.com/TeamHypersomnia/Hypersomnia/blob/master/augs/templates/introspection_traits.h"><span class="vsparam">[</span>https://github.com/TeamHypersomnia/Hypersomnia/blob/master/augs/templates/introspection_traits.h<span class="vsparam">]</span></a><br/>
+<a style="color:white" href="https://github.com/TeamHypersomnia/Hypersomnia/blob/master/src/augs/templates/introspect.h"><span class="vsparam">[</span>https://github.com/TeamHypersomnia/Hypersomnia/blob/master/src/augs/templates/introspect.h<span class="vsparam">]</span></a><br/>
+<a style="color:white" href="https://github.com/TeamHypersomnia/Hypersomnia/blob/master/src/augs/templates/introspection_traits.h"><span class="vsparam">[</span>https://github.com/TeamHypersomnia/Hypersomnia/blob/master/src/augs/templates/introspection_traits.h<span class="vsparam">]</span></a><br/>
