@@ -28,7 +28,7 @@ layout: default
     <div class="post-container" data-id="{{ post.comments_identifier }}">
           <a style="color:white" class="vstext" href="{{ post.url | prepend: site.baseurl }}"><span class="vsparam">[</span>{{ post.title }}<span class="vsparam">]</span></a><br/>
         <a class="vstext" href="{{ post.url }}"><span class="vsparam">[</span><span class="vsnumber">{{ post.date | date: "%d" }}</span>.<span class="vsnumber">{{ post.date | date: "%m" }}</span>.<span class="vsnumber">{{ post.date | date: "%Y" }}</span><span class="vsparam">]</span> <!--<span class="vscomment">{{post.date | date: "// %H:%M"}}</span> --></a>
-          <a style="font-style:italic" class="vsparam replies-count" href="{{ post.url | prepend: site.baseurl }}">(Be the first to comment!)</a><br/><br/>
+          <!--<a style="font-style:italic" class="vsparam replies-count" href="{{ post.url | prepend: site.baseurl }}">(Be the first to comment!)</a><br/><br/>-->
             
             {% if post.excerpt_separator %}
             {{ post.excerpt }} <br/>
