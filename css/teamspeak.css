@@ -29,14 +29,14 @@ div.pwchanimg
 	float:left;
 	width:16px;
 	height:16px;
-	background-image:URL(http://hypersomnia.pl/images/tsviewer/pwchannel.png);
+	background-image:URL(http://hypersomnia.xyz/images/tsviewer/pwchannel.png);
 	}
 div.chanimg
 	{
 	float:left;
 	width:16px;
 	height:16px;
-	background-image:URL(http://hypersomnia.pl/images/tsviewer/channel.png);
+	background-image:URL(http://hypersomnia.xyz/images/tsviewer/channel.png);
 	}
 div.channame
 	{
@@ -61,7 +61,7 @@ div.fullimg
 	float:left;
 	width:16px;
 	height:16px;
-	background-image:URL(http://hypersomnia.pl/images/tsviewer/channel_red.png);
+	background-image:URL(http://hypersomnia.xyz/images/tsviewer/channel_red.png);
 	}
 div.clear
 	{
@@ -72,7 +72,7 @@ div.away_img
 	float:left;
 	width:16px;
 	height:16px;
-	background-image:URL(http://hypersomnia.pl/images/tsviewer/away.png);
+	background-image:URL(http://hypersomnia.xyz/images/tsviewer/away.png);
 	}
 div.away_msg
 	{
@@ -88,56 +88,56 @@ div.hwhead_img
 	float:left;
 	width:16px;
 	height:16px;
-	background-image:URL(http://hypersomnia.pl/images/tsviewer/hwhead.png);
+	background-image:URL(http://hypersomnia.xyz/images/tsviewer/hwhead.png);
 	}
 div.hwmic_img
 	{
 	float:left;
 	width:16px;
 	height:16px;
-	background-image:URL(http://hypersomnia.pl/images/tsviewer/hwmic.png);
+	background-image:URL(http://hypersomnia.xyz/images/tsviewer/hwmic.png);
 	}
 div.head_img
 	{
 	float:left;
 	width:16px;
 	height:16px;
-	background-image:URL(http://hypersomnia.pl/images/tsviewer/head.png);
+	background-image:URL(http://hypersomnia.xyz/images/tsviewer/head.png);
 	}
 div.mic_img
 	{
 	float:left;
 	width:16px;
 	height:16px;
-	background-image:URL(http://hypersomnia.pl/images/tsviewer/mic.png);
+	background-image:URL(http://hypersomnia.xyz/images/tsviewer/mic.png);
 	}
 div.player_on_img
 	{
 	float:left;
 	width:16px;
 	height:16px;
-	background-image:URL(http://hypersomnia.pl/images/tsviewer/player_on.png);
+	background-image:URL(http://hypersomnia.xyz/images/tsviewer/player_on.png);
 	}
 div.player_img
 	{
 	float:left;
 	width:16px;
 	height:16px;
-	background-image:URL(http://hypersomnia.pl/images/tsviewer/player.png);
+	background-image:URL(http://hypersomnia.xyz/images/tsviewer/player.png);
 	}
 div.player_command_img
 	{
 	float:left;
 	width:16px;
 	height:16px;
-	background-image:URL(http://hypersomnia.pl/images/tsviewer/player_commander.png);
+	background-image:URL(http://hypersomnia.xyz/images/tsviewer/player_commander.png);
 	}
 div.player_command_on_img
 	{
 	float:left;
 	width:16px;
 	height:16px;
-	background-image:URL(http://hypersomnia.pl/images/tsviewer/player_commander_on.png);
+	background-image:URL(http://hypersomnia.xyz/images/tsviewer/player_commander_on.png);
 	}
 div.clientnick
 	{
@@ -178,7 +178,7 @@ div.server_img
 	float:left;
 	width:16px;
 	height:16px;
-	background-image:URL(http://hypersomnia.pl/images/tsviewer/server.png);
+	background-image:URL(http://hypersomnia.xyz/images/tsviewer/server.png);
 	}
 div.copy
 	{
