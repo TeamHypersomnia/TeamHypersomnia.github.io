@@ -47,8 +47,6 @@ layout: default
 <br/><br/>
 
 <div style="width:100%; height: 5px; border-bottom: 1px dotted rgb(60, 60, 60)"></div>
-<!--	<span class="vscomment">// =====================================================================================================</span>
--->
   <br/><br/>
     </div>
 
@@ -81,26 +79,6 @@ layout: default
 {% endif %}
 <br/>
 	Page <span class="vsnumber">{{ paginator.page }}</span> of <span class="vsnumber">{{ paginator.total_pages }}</span><br/>
-  Total posts: <span class="vsnumber">{{ paginator.total_posts }}</span> 
-
-
-<!--<script>
-$(document).ready(function()
-{
-  $.post( "http://patrykcysarz.pl/comment-system/web/comments/get-count", function( data ) {
-    var postCounts = JSON.parse(data);
-    
-    for(var postId in postCounts)
-    {
-    	$(".post-container[data-id='" + postId + "'").find(".replies-count").html("(" + postCounts[postId] + " Comments)");
-    }
-  });	
-});
-</script>
-
-<br/><br/><span class="vsparam">Notify me of new posts via e-mail:</span><br/>
-
-<iframe seamless="seamless" scrolling="no" frameborder="0" src="http://patrykcysarz.pl/comment-system/web/newsletter/sign-up" style="width:100%;"></iframe>
-<script>$('iframe').iFrameResize();</script>-->
+  Total posts: <span class="vsnumber">{{ paginator.total_posts }}</span>
 
 </div>
