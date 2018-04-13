@@ -10,17 +10,19 @@ layout: default
   <br/>
   <div class="post-content" itemprop="articleBody">
     {{ content }}
-  </div>
-<!--<br/>
-<br/>
-<div style="width:100%; border-top: 1px solid rgb(60, 60, 60)"></div>
-<span style="font-size:14px; color:rgb(60, 60, 60)">Comments:</span>-->
-<br/>
+  <br/>
+  <div id="disqus_thread"></div>
+  <script>
+    let disqus_name = "{{ site.disqus.name }}";
 
-<!--<div id ="commentssection">
-  <iframe seamless="seamless" scrolling="no" frameborder="0" src="{{'http://patrykcysarz.pl/comment-system/web/comments/show/'}}{{ page.comments_identifier }}" style="width: 100%"></iframe>
-</div>
+    (function() {
+      let dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
 
-<script>$('iframe').iFrameResize();</script>-->
+      dsq.src = '//' + disqus_name + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
 
 </article>

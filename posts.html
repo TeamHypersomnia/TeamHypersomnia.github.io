@@ -23,17 +23,3 @@ permalink: /posts/
 
   Total posts: <span class="vsnumber">{{ site.posts | size }}</span> <br/>
 </div>
-
-<!--<script>
-$(document).ready(function()
-{
-  $.post( "http://patrykcysarz.pl/comment-system/web/comments/get-count", function( data ) {
-    var postCounts = JSON.parse(data);
-    
-    for(var postId in postCounts)
-    {
-      $(".post-container[data-id='" + postId + "'").find(".replies-count").html("(" + postCounts[postId] + " Comments)");
-    }
-  }); 
-});
-</script>-->
