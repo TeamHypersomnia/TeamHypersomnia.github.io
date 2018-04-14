@@ -11,12 +11,11 @@ permalink: /posts/
     <div class="post-container" data-id="{{ post.comments_identifier }}">
         <span class="vsparam">[</span><span class="vsnumber">{{ post.date | date: "%d" }}</span>.<span class="vsnumber">{{ post.date | date: "%m" }}</span>.<span class="vsnumber">{{ post.date | date: "%Y" }}</span><span class="vsparam">]</span>
     {% if post.small_title %}
-          <a class="vsenum" href="{{ post.url | prepend: site.baseurl }}">{{ post.small_title }}</a>
+        <a class="vsenum" href="{{ post.url | prepend: site.baseurl }}">{{ post.small_title }}</a>
     {% else %}
-          <a class="vsenum" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+        <a class="vsenum" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
     {% endif %}
-          <a style="font-style:italic" class="vsparam replies-count" href="{{ post.url | prepend: site.baseurl }}">(0 Comments)</a>
-          <br/>
+        <br/>
     </div>
     {% endfor %}
   </ul>
