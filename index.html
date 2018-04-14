@@ -6,24 +6,6 @@ layout: default
 <a class="vsmacro" href="{{ site.url }}"> The Newscast Atlantis</a><br/>
 <span class="subjectheader">Developers' progress records and announcements.</span><br/>
 <br/>
-{% if paginator.total_pages > 1 %}
-  Page <span class="vsnumber">{{ paginator.page }}</span> of <span class="vsnumber">{{ paginator.total_pages }}</span><br/>
-<div class="pagination">
-
-  {% for page in (1..paginator.total_pages) %}
-    {% if page == paginator.page %}
-      <span class="vstype">[{{ page }}]</span>
-    {% elsif page == 1 %}
-      <a class="vsenum" href="{{ site.url }}"><span class="vsparam">[</span>{{ page }}<span class="vsparam">]</span></a>
-    {% else %}
-      <a class="vsenum" href="{{  page | prepend: '/page' | prepend: site.baseurl }}"><span class="vsparam">[</span>{{ page }}<span class="vsparam">]</span></a>
-    {% endif %}
-  {% endfor %}
-
-</div>
-{% endif %}
-
-<br/>
     {% for post in paginator.posts %}
     <div class="post-container" data-id="{{ post.comments_identifier }}">
           <a style="color:white" class="vstext" href="{{ post.url | prepend: site.baseurl }}"><span class="vsparam">[</span>{{ post.title }}<span class="vsparam">]</span></a><br/>
@@ -78,7 +60,5 @@ layout: default
 </div>
 {% endif %}
 <br/>
-	Page <span class="vsnumber">{{ paginator.page }}</span> of <span class="vsnumber">{{ paginator.total_pages }}</span><br/>
-  Total posts: <span class="vsnumber">{{ paginator.total_posts }}</span>
 
 </div>
