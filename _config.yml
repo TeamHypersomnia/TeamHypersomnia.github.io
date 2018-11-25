@@ -10,13 +10,13 @@ title: Hypersomnia newspaper
 email: patryk.czachurski@gmail.com
 description: Daily record of progress and new features.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://hypersomnia.xyz" # the base hostname & protocol for your site
+url: "https://hypersomnia.xyz" # the base hostname & protocol for your site
 twitter_username: jekyllrb
 github_username:  geneotech
 disqus:
   name: "hypersomnia"
-img_dir: "http://hypersomnia.xyz/pics/"
-img2_dir: "http://gifyu.com/images/"
+img_dir: "https://hypersomnia.xyz/pics/"
+img2_dir: "https://gifyu.com/images/"
 ts3_link: "ts3server://ts3.hypersomnia.xyz?nickname=BlogVisitor&cid=254&channelpassword=defaultChannelPassword&addbookmark=HypersomniaCongressCenter"
 permalink: /newscast/:title
 # Build settings
